@@ -12,10 +12,54 @@ public class FlightTest
     /*
      * This is a test for the arrival time function.
      * 
-     * @param assertEquals
+     * @param assertTrue
      */
     public void testArrivalTime() {
         assertTrue(flight.getArrivalTime() == 100840);
-        
+    }
+
+    /*
+     * This is a test for the departing airport function.
+     * 
+     * @param assertEquals
+     */
+    public void testDepartAirport() {
+        assertTrue(flight.getDepartingAirport().equals("Toronto"));
+    }
+
+    /*
+     * This is a test for the destination airport function.
+     * 
+     * @param assertEquals
+     */
+    public void testDestAirport() {
+        assertTrue(flight.getDestinationAirport().equals("Beijing"));
+    }
+
+    /*
+     * This is a test for the departing time function.
+     * 
+     * @param assertTrue
+     */
+    public void testDeptTime() {
+        assertTrue(flight.getDepartingTime() == 40000);
+    }
+
+    /*
+     * This is a test for the flight duration function.
+     * 
+     * @param assertTrue
+     */
+    public void testFlightDuration() {
+        assertTrue(flight.getFlightDuration() == 60840);
+    }
+
+    /*
+     * This is a test for the ID function.
+     * 
+     * @param assertTrue
+     */
+    public void testID() {
+        assertTrue(flight.getID() == 69);
     }
 }
