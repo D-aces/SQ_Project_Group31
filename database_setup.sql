@@ -56,7 +56,7 @@ create table MO_Bookings (
 	flightPath varchar(1000) NOT NULL,
     departing varchar(50) NOT NULL,
     destination varchar(50) NOT NULL,
-    departingTime DATETIME NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     primary key(id),
     foreign key(departing) references Airports(port_name),
