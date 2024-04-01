@@ -36,7 +36,8 @@ create table Users (
 create table MR_Bookings (
 	id int(10) auto_increment,
     uname varchar(50) NOT NULL, 
-    flightPath varchar(1000) NOT NULL,
+    departingPath varchar(1000) NOT NULL,
+    returningPath varchar(1000) NOT NULL,
     departing varchar(50) NOT NULL,
     destination varchar(50) NOT NULL,
     departingTime int NOT NULL,
