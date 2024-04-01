@@ -6,16 +6,17 @@ package com.otu.SOFE3980U;
  */
 public class Flight {
 	private String departingAirport, destinationAirport;
-	private int departingTime, flightDuration;
+	private int departingTime, flightDuration, ID;
 	
 	/**
 	 * Constructor for Flight class
 	 */
-	public Flight(String departingAirport, String destinationAirport, int departingTime, int flightDuration) {
+	public Flight(String departingAirport, String destinationAirport, int departingTime, int flightDuration, int ID) {
 		this.departingAirport = departingAirport;
 		this.destinationAirport = destinationAirport;
 		this.departingTime = departingTime;
 		this.flightDuration = flightDuration;
+		this.ID = ID;
 	}
 	
 	/*
@@ -53,7 +54,13 @@ public class Flight {
 	public int getFlightDuration() {
 		return flightDuration;
 	}
-	
-	
+
+	/**
+	 * 
+	 * @return ID of the flight
+	 */
+	public int getID(){
+		return this.ID;
+	}
 
 }
