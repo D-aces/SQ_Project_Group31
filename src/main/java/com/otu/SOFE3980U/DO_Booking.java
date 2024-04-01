@@ -1,5 +1,4 @@
-public class DO_Booking
-{
+public class DO_Booking implements Booking{
     private Flight flight;
 
     public bool get_one_way()

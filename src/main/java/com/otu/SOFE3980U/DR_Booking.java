@@ -1,5 +1,4 @@
-public class DR_Booking
-{
+public class DR_Booking implements Booking{
     private Flight[] flights;
     private int Stay;
     
