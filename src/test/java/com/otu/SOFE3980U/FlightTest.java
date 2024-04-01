@@ -7,10 +7,15 @@ import junit.framework.TestSuite;
 
 public class FlightTest 
 {
-    Flight flight = new Flight("Toronto", "Beijing", 40000, 60840);
+    Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
 
-    @Test
+    /*
+     * This is a test for the arrival time function.
+     * 
+     * @param assertEquals
+     */
     public void testArrivalTime() {
-        assertEquals(flight.getArrivalTime(), 100840);
+        assertTrue(flight.getArrivalTime() == 100840);
+        
     }
 }
