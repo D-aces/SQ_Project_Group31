@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-class Database{
+class database{
 
     private static String username = "quality";
     private static String password = "quality";

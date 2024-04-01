@@ -1,35 +1,41 @@
 package com.otu.SOFE3980U;
 
-public class DO_Booking implements Booking{
-    private Flight flight = null;
+public class DO_Booking implements Booking
+{
+    private Flight[] flight;
 
-    public boolean get_one_way()
+    public boolean getTripType()
     {
         return false;
     }
 
-    public void get_ticket()
+    public boolean getOneWay()
     {
-        System.out.println("Ticket");
+        return true;
     }
 
-    public boolean get_trip_type()
+    public void getTicket(Booking booking)
     {
-        return false;
+        System.out.println();
     }
 
-    public void add_flight(Flight flight)
+    public void addFlight(Flight origin, Flight destination)
     {
-        if(this.flight != null){
-            return;
-        }else{
-            this.flight = flight;
-        }
-        
+        flight[0] = origin;
+        flight[1] = destination;
+
+        System.out.println("Flight added:\nOrigin: " + flight + "\nDestination: " + flight);
     }
 
-    public void get_flight_time()
+    public int getFlightTime()
     {
-        System.out.println("Flight time");
+        return 0;
+    }
+
+    public Flight getDirect()
+    {
+        // Directly call the static method on the Database class
+        Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
+        return flight;
     }
 }
