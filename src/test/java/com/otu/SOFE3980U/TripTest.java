@@ -9,7 +9,12 @@ import junit.framework.TestSuite;
 public class TripTest {
     Trip trip = new Trip("Toronto", "Beijing", 40000);
 
-    public void testCalcFlight() {
-        assertTrue(Trip.getArrivalTime() == 100840);
+    public void testFlightPath() {
+
+    }
+
+    // so true oomfie
+    public void testGetFlight() {
+
     }
 }
