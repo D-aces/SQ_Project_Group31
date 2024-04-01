@@ -1,6 +1,7 @@
 package com.otu.SOFE3980U;
 
-public class DR_Booking implements Booking{
+public class DR_Booking
+{
     private Flight[] flights;
     private int Stay;
     
@@ -9,7 +10,7 @@ public class DR_Booking implements Booking{
         return false;
     }
 
-    public booelan get_one_way()
+    public boolean get_one_way()
     {
         return false;
     }
@@ -19,10 +20,12 @@ public class DR_Booking implements Booking{
         System.out.println("Ticket");
     }
 
-    public void add_flight()
+    public void add_flight(Flight origin, Flight destination)
     {
-        //Add code here
-        System.out.println("Flight added");
+        flights[0] = origin;
+        flights[1] = destination;
+
+        System.out.println("Flight added:\nOrigin: " + flights[0] + "\nDestination: " + flights[1]);
     }
 
     public int get_flight_time()
