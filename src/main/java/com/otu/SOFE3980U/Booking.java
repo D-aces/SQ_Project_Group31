@@ -9,6 +9,6 @@ public interface Booking {
 	public boolean getTripType();
 	public boolean getOneWay();
 	public Flight addFlight();
-	public int getFlightTime(Flight flight);
+	public int getFlightTime();
 
 }
