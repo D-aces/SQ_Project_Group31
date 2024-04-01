@@ -1,3 +1,5 @@
+package com.otu.SOFE3980U;
+
 public class DR_Booking
 {
     private Flight[] flights;
@@ -8,7 +10,7 @@ public class DR_Booking
         return false;
     }
 
-    public booelan get_one_way()
+    public boolean get_one_way()
     {
         return false;
     }

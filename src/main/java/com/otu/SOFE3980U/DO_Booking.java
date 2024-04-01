@@ -1,8 +1,10 @@
+package com.otu.SOFE3980U;
+
 public class DO_Booking
 {
     private Flight flight;
 
-    public bool get_one_way()
+    public boolean get_one_way()
     {
         return false;
     }
