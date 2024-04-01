@@ -30,7 +30,7 @@ public class FlightTest
     /*
      * This is a test for the destination airport function.
      * 
-     * @param assertEquals
+     * @param assertTrue
      */
     public void testDestAirport() {
         assertTrue(flight.getDestinationAirport().equals("Beijing"));
