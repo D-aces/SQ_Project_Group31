@@ -20,10 +20,12 @@ public class DR_Booking
         System.out.println("Ticket");
     }
 
-    public void add_flight()
+    public void add_flight(Flight origin, Flight destination)
     {
-        //Add code here
-        System.out.println("Flight added");
+        flights[0] = origin;
+        flights[1] = destination;
+
+        System.out.println("Flight added:\nOrigin: " + flights[0] + "\nDestination: " + flights[1]);
     }
 
     public int get_flight_time()
