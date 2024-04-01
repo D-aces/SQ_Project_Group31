@@ -102,6 +102,8 @@ class Database{
         PreparedStatement statement = con.PreparedStatement("select connecting from Airports where port_name=" + airportName);
         ResultSet result = statement.executeQuery();
 
+        con.close();
+
         if(result.next()){
             String[] connecting = result.getString("connecting").split(":");
             return connecting;
