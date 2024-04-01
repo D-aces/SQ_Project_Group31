@@ -15,7 +15,7 @@ public class FlightTest
      * @param assertTrue
      */
     public void testArrivalTime() {
-        assertTrue(flight.getArrivalTime() == 100840);
+        assertTrue(Flight.getArrivalTime() == 100840);
     }
 
     /*
