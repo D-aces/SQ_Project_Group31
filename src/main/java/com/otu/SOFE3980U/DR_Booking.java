@@ -1,3 +1,5 @@
+package com.otu.SOFE3980U;
+
 public class DR_Booking implements Booking{
     private Flight[] flights;
     private int Stay;

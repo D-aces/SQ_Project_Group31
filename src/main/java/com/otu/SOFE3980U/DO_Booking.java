@@ -1,3 +1,5 @@
+package com.otu.SOFE3980U;
+
 public class DO_Booking implements Booking{
     private Flight flight = null;
 
