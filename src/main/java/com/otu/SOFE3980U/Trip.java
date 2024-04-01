@@ -1,11 +1,7 @@
 package com.otu.SOFE3980U;
 
 import java.util.*;
-<<<<<<< HEAD
 //static import Database.java;
-=======
-// static import Database.java;
->>>>>>> e716e28917d229c11d51d4cc7fc5a3a45b50ac2e
 
 public class Trip {
     // Attributes
@@ -24,7 +20,7 @@ public class Trip {
 
     public void calculateFlightDetails() {
     // Directly call the static method on the Database class
-    Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
+    // Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
     
     if (flight != null) {
         this.flightPath = new ArrayList<>(); // Initialize your flightPath list
