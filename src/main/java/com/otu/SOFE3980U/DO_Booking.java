@@ -6,12 +6,12 @@ public class DO_Booking
 
     public boolean get_one_way()
     {
-        return false;
+        return true;
     }
 
     public void get_ticket()
     {
-        System.out.println("Ticket");
+        System.out.println();
     }
 
     public boolean get_trip_type()
