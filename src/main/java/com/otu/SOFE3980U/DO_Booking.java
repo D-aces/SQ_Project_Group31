@@ -1,36 +1,34 @@
 package com.otu.SOFE3980U;
 
-public class DO_Booking
+public class DO_Booking implements Booking
 {
-    private Flight flight;
+    private Flight[] flight;
 
-    public boolean get_one_way()
-    {
-        return true;
-    }
-
-    public void get_ticket()
-    {
-        System.out.println();
-    }
-
-    public boolean get_trip_type()
+    public boolean getTripType()
     {
         return false;
     }
 
-    public void add_flight(Flight flight)
+    public boolean getOneWay()
     {
-        if(this.flight != null){
-            return;
-        }else{
-            this.flight = flight;
-        }
-        
+        return true;
     }
 
-    public void get_flight_time()
+    public void getTicket(Booking booking)
     {
-        System.out.println("Flight time");
+        System.out.println();
+    }
+
+    public void addFlight(Flight origin, Flight destination)
+    {
+        flight[0] = origin;
+        flight[1] = destination;
+
+        System.out.println("Flight added:\nOrigin: " + flight + "\nDestination: " + flight);
+    }
+
+    public int getFlightTime()
+    {
+        return 0;
     }
 }
