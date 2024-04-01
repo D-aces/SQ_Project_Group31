@@ -1,7 +1,7 @@
 public class DO_Booking implements Booking{
     private Flight flight;
 
-    public bool get_one_way()
+    public boolean get_one_way()
     {
         return false;
     }
@@ -16,10 +16,12 @@ public class DO_Booking implements Booking{
         return false;
     }
 
-    public void add_flight()
+    public void add_flight(Flight flight)
     {
-        //Add code here
-        System.out.println("Flight added");
+        if(this.flight != NULL){
+            return;
+        }
+        
     }
 
     public void get_flight_time()

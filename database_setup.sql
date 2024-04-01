@@ -17,12 +17,13 @@ create table Flights (
 	id int(10) auto_increment,
     departing varchar(50) NOT NULL,
     destination varchar(50) NOT NULL,
-    departingTime int4 NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     primary key(id),
 	foreign key(departing) references Airports(port_name),
     foreign key (destination) references Airports(port_name),
-    check (flightTime >= 0)
+    check (flightTime >= 0),
+    check (departingTime between 0 and 86400)
 );
 
 create table Users (
@@ -38,14 +39,15 @@ create table MR_Bookings (
     flightPath varchar(1000) NOT NULL,
     departing varchar(50) NOT NULL,
     destination varchar(50) NOT NULL,
-    departingTime int4 NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     stay int(5) default 0,
     primary key(id),
     foreign key(departing) references Airports(port_name),
     foreign key(destination) references Airports(port_name),
     foreign key(uname) references Users(uname),
-	check (destination != departing)
+	check (destination != departing),
+    check (departingTime between 0 and 86400)
 );
 
 create table MO_Bookings (
@@ -60,7 +62,8 @@ create table MO_Bookings (
     foreign key(departing) references Airports(port_name),
     foreign key(destination) references Airports(port_name),
     foreign key(uname) references Users(uname),
-    check (destination != departing)
+    check (destination != departing),
+    check (departingTime between 0 and 86400)
 );
 
 create table DR_Bookings (
