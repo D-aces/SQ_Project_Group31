@@ -75,6 +75,7 @@ class Database{
             //Add flight conversion
 
             //Add forming output
+            //bookings.add(?)
         }
     }
 

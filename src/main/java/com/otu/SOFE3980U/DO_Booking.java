@@ -1,7 +1,9 @@
-public class DO_Booking implements Booking{
-    private Flight flight;
+package com.otu.SOFE3980U;
 
-    public bool get_one_way()
+public class DO_Booking implements Booking{
+    private Flight flight = null;
+
+    public boolean get_one_way()
     {
         return false;
     }
@@ -16,10 +18,14 @@ public class DO_Booking implements Booking{
         return false;
     }
 
-    public void add_flight()
+    public void add_flight(Flight flight)
     {
-        //Add code here
-        System.out.println("Flight added");
+        if(this.flight != null){
+            return;
+        }else{
+            this.flight = flight;
+        }
+        
     }
 
     public void get_flight_time()
