@@ -1,34 +1,34 @@
 package com.otu.SOFE3980U;
 
-public class DR_Booking
+public class DR_Booking implements Booking
 {
     private Flight[] flights;
     private int Stay;
     
-    public boolean get_trip_type()
+    public boolean getTripType()
     {
         return false;
     }
 
-    public boolean get_one_way()
+    public boolean getOneWay()
     {
         return false;
     }
 
-    public void get_ticket()
+    public void getTicket(Booking booking)
     {
         System.out.println("Ticket");
     }
 
-    public void add_flight(Flight origin, Flight destination)
+    public void addFlight(Flight origin, Flight destination)
     {
         flights[0] = origin;
         flights[1] = destination;
 
-        System.out.println("Flight added:\nOrigin: " + flights[0] + "\nDestination: " + flights[1]);
+        System.out.println("Flight added:\nOrigin: " + flights[0] + "\nDestination: " + flights[1]); 
     }
 
-    public int get_flight_time()
+    public int getFlightTime()
     {
         return 0;
     }
