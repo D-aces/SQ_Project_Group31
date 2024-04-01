@@ -2,7 +2,7 @@
  * Author: Logan Butler
  */
 
-package main.java.com.otu.SOFE3980U;
+package com.otu.SOFE3980U;
 
 import java.sql.*;
 import java.io.*;
@@ -17,8 +17,8 @@ class Database{
 
     public static List<Booking> getUserBookings(String uname){
         Connection con = connect();
-        if(con == NULL){
-            return NULL;
+        if(con == null){
+            return null;
         }
 
         //Get all types of bookings

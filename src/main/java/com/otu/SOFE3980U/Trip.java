@@ -1,7 +1,7 @@
 package com.otu.SOFE3980U;
 
 import java.util.*;
-static import Database.java;
+//static import Database.java;
 
 public class Trip {
     // Attributes
@@ -27,7 +27,7 @@ public class Trip {
         this.flightPath.add(flight);
         // Calculate total trip duration based on this flight's details
         // Assuming Flight class has a method getFlightTime() that returns the flight time
-        this.totalTripDuration = flight.getFlightTime();
+        this.totalTripDuration = flight.getFlightDuration();
     }
 
     // Handle cases where there are multiple flights or no flights found
