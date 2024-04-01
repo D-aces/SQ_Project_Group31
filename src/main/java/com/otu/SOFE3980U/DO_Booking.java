@@ -1,5 +1,5 @@
 public class DO_Booking implements Booking{
-    private Flight flight;
+    private Flight flight = null;
 
     public boolean get_one_way()
     {
@@ -18,8 +18,10 @@ public class DO_Booking implements Booking{
 
     public void add_flight(Flight flight)
     {
-        if(this.flight != NULL){
+        if(this.flight != null){
             return;
+        }else{
+            this.flight = flight;
         }
         
     }
