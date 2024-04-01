@@ -5,13 +5,13 @@ package com.otu.SOFE3980U;
  *
  */
 public class Flight {
-	private Airport departingAirport, destinationAirport;
+	private String departingAirport, destinationAirport;
 	private int departingTime, flightDuration;
 	
 	/**
 	 * Constructor for Flight class
 	 */
-	public Flight(Airport departingAirport, Airport destinationAirport, int departingTime, int flightDuration) {
+	public Flight(String departingAirport, String destinationAirport, int departingTime, int flightDuration) {
 		this.departingAirport = departingAirport;
 		this.destinationAirport = destinationAirport;
 		this.departingTime = departingTime;
@@ -29,14 +29,14 @@ public class Flight {
 	/**
 	 * @return the departingAirport
 	 */
-	public Airport getDepartingAirport() {
+	public String getDepartingAirport() {
 		return departingAirport;
 	}
 
 	/**
 	 * @return the destinationAirport
 	 */
-	public Airport getDestinationAirport() {
+	public String getDestinationAirport() {
 		return destinationAirport;
 	}
 

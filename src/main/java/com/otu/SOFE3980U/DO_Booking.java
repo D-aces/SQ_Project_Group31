@@ -19,10 +19,14 @@ public class DO_Booking
         return false;
     }
 
-    public void add_flight()
+    public void add_flight(Flight flight)
     {
-        //Add code here
-        System.out.println("Flight added");
+        if(this.flight != null){
+            return;
+        }else{
+            this.flight = flight;
+        }
+        
     }
 
     public void get_flight_time()

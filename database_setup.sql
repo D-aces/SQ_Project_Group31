@@ -15,14 +15,15 @@ create table Airports (
 
 create table Flights (
 	id int(10) auto_increment,
-    departing int(5) NOT NULL,
-    destination int(5) NOT NULL,
-    departingTime DATETIME NOT NULL,
+    departing varchar(50) NOT NULL,
+    destination varchar(50) NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     primary key(id),
-	foreign key(departing) references Airports(id),
-    foreign key (destination) references Airports(id),
-    check (flightTime >= 0)
+	foreign key(departing) references Airports(port_name),
+    foreign key (destination) references Airports(port_name),
+    check (flightTime >= 0),
+    check (departingTime between 0 and 86400)
 );
 
 create table Users (
@@ -36,31 +37,33 @@ create table MR_Bookings (
 	id int(10) auto_increment,
     uname varchar(50) NOT NULL, 
     flightPath varchar(1000) NOT NULL,
-    departing int(5) NOT NULL,
-    destination int(5) NOT NULL,
-    departingTime DATETIME NOT NULL,
+    departing varchar(50) NOT NULL,
+    destination varchar(50) NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     stay int(5) default 0,
     primary key(id),
-    foreign key(departing) references Airports(id),
-    foreign key(destination) references Airports(id),
+    foreign key(departing) references Airports(port_name),
+    foreign key(destination) references Airports(port_name),
     foreign key(uname) references Users(uname),
-	check (destination != departing)
+	check (destination != departing),
+    check (departingTime between 0 and 86400)
 );
 
 create table MO_Bookings (
 	id int(10) auto_increment,
 	uname varchar(50) NOT NULL,
 	flightPath varchar(1000) NOT NULL,
-    departing int(5) NOT NULL,
-    destination int(5) NOT NULL,
-    departingTime DATETIME NOT NULL,
+    departing varchar(50) NOT NULL,
+    destination varchar(50) NOT NULL,
+    departingTime int NOT NULL,
     flightTime int(5) default 0,
     primary key(id),
-    foreign key(departing) references Airports(id),
-    foreign key(destination) references Airports(id),
+    foreign key(departing) references Airports(port_name),
+    foreign key(destination) references Airports(port_name),
     foreign key(uname) references Users(uname),
-    check (destination != departing)
+    check (destination != departing),
+    check (departingTime between 0 and 86400)
 );
 
 create table DR_Bookings (
@@ -85,3 +88,11 @@ create table DO_Bookings (
 );
 
 show tables;
+
+drop table DO_Bookings;
+drop table DR_Bookings;
+drop table MO_Bookings;
+drop table MR_Bookings;
+drop table Users;
+drop table Flights;
+drop table Airports;
