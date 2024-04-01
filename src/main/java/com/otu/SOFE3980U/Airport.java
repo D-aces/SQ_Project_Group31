@@ -1,5 +1,6 @@
 package com.otu.SOFE3980U;
 
+// this is a change
 public class Airport {
 	private String name;
 	private Airport[] connectingAirports;
