@@ -18,6 +18,7 @@ public class Trip {
         this.departingTime = departingTime;
     }
 
+<<<<<<< Updated upstream
     public void calculateFlightDetails() {
     // Directly call the static method on the Database class
     // Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
@@ -28,11 +29,49 @@ public class Trip {
         // Calculate total trip duration based on this flight's details
         // Assuming Flight class has a method getFlightTime() that returns the flight time
         this.totalTripDuration = flight.getFlightDuration();
+=======
+
+    public void findFlightPath() {
+    // Call queryConnectingAirports and assign the result to firstConnection
+    String[] firstConnection = queryConnectingAirports(this.departingAirport);
+
+    // Loop through each airport in the first connection
+    for (String transitAirport : firstConnection) {
+        // Call queryConnectingAirports for the second connection
+        String[] secondConnection = queryConnectingAirports(transitAirport);
+
+        // Loop through each airport in the second connection
+        for (String finalTransitAirport : secondConnection) {
+            // Check if the current airport is the final destination
+            if (finalTransitAirport.equals(finalDestination)) {
+                // If it is, print the connection path and break out of the loop
+                System.out.println(this.departingAirport + " -> " + transitAirport + " -> " + finalDestination);
+                return; // Exit the method once the path is found
+            }
+        }
+>>>>>>> Stashed changes
     }
 
-    // Handle cases where there are multiple flights or no flights found
+	// Query for the first flight from departingAirport to transitAirport
+	Flight firstLeg = queryFlight(this.departingAirport, transitAirport, this.departingTime);
+	if (firstLeg != null) {
+		flightPath.add(firstLeg); // Add the first leg of the journey to the flight path
+	}
+
+	// Calculate an assumed departing time for the next leg of the journey
+	int nextLegDepartingTime = this.departingTime + 3600; // For example, adding 1 hour
+
+	// Query for the second flight from transitAirport to finalDestination
+	Flight secondLeg = queryFlight(transitAirport, this.finalDestination, nextLegDepartingTime);
+	if (secondLeg != null) {
+		flightPath.add(secondLeg); // Add the second leg of the journey to the flight path
+	}
+
+	totalTripDuration == 7;
 }
 
+public List<Flight> getFlightPath() {
+        return flightPath;
+    }
 
-    // ... other methods and logic ...
 }
