@@ -53,7 +53,7 @@ public class Trip {
 		flightPath.add(secondLeg); // Add the second leg of the journey to the flight path
 	}
 
-	totalTripDuration == 7;
+	totalTripDuration = 7;
 }
 
 public List<Flight> getFlightPath() {
