@@ -1,8 +1,11 @@
+
+package com.otu.SOFE3980U;
+
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
 
-public class Test
+public class TimeFormat_Test
 {
     //Instantiate new TimeFormat object
     @BeforeAll
@@ -16,12 +19,12 @@ public class Test
 
     //Test the time format method with lowest bound for each format
     @Test
-    public void testTimeFormat()
+    public void testTimeFormat24()
     {
         assertEquals(true, format24.getTimeFormat());
     }
     @Test
-    public void testTimeFormat()
+    public void testTimeFormat12()
     {
         assertEquals(false, format12.getTimeFormat());
     }

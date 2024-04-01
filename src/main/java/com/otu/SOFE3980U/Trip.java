@@ -1,7 +1,11 @@
 package com.otu.SOFE3980U;
 
 import java.util.*;
+<<<<<<< HEAD
 //static import Database.java;
+=======
+// static import Database.java;
+>>>>>>> e716e28917d229c11d51d4cc7fc5a3a45b50ac2e
 
 public class Trip {
     // Attributes
