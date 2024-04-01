@@ -5,10 +5,10 @@ package com.otu.SOFE3980U;
  *
  */
 public interface Booking {
-	void getTicket(Booking booking);
-	boolean getTripType();
-	boolean getOneWay();
-	Flight addFlight();
-	int getFlightTime(Flight flight);
+	public void getTicket(Booking booking);
+	public boolean getTripType();
+	public boolean getOneWay();
+	public Flight addFlight();
+	public int getFlightTime(Flight flight);
 
 }
