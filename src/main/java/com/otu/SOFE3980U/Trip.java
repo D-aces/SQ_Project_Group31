@@ -18,19 +18,6 @@ public class Trip {
         this.departingTime = departingTime;
     }
 
-<<<<<<< Updated upstream
-    public void calculateFlightDetails() {
-    // Directly call the static method on the Database class
-    // Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
-    
-    if (flight != null) {
-        this.flightPath = new ArrayList<>(); // Initialize your flightPath list
-        this.flightPath.add(flight);
-        // Calculate total trip duration based on this flight's details
-        // Assuming Flight class has a method getFlightTime() that returns the flight time
-        this.totalTripDuration = flight.getFlightDuration();
-=======
-
     public void findFlightPath() {
     // Call queryConnectingAirports and assign the result to firstConnection
     String[] firstConnection = queryConnectingAirports(this.departingAirport);
@@ -49,7 +36,6 @@ public class Trip {
                 return; // Exit the method once the path is found
             }
         }
->>>>>>> Stashed changes
     }
 
 	// Query for the first flight from departingAirport to transitAirport
