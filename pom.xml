@@ -80,7 +80,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.ontariotechu.sofe3980U.App</mainClass>
+							<mainClass>com.otu.SOFE3980U.App</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
@@ -100,7 +100,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.otu.sofe3980U.App</mainClass>
+							<mainClass>com.otu.SOFE3980U.App</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

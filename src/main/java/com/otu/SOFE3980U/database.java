@@ -125,5 +125,13 @@ class database{
         return con;
     }
 
+    public static saveBooking(Booking booking){
+        Connection con = connect();
+
+        if(con == null){
+            return;
+        }
+    }
+
     
 }
