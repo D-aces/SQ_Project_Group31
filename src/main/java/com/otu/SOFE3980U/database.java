@@ -9,6 +9,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.otu.SOFE3980U.DO_Booking;
+import com.otu.SOFE3980U.DR_Booking;
+import com.otu.SOFE3980U.Flight;
+
 class database{
 
     private static String username = "quality";
@@ -125,13 +129,68 @@ class database{
         return con;
     }
 
-    public static saveBooking(Booking booking){
+    public static void saveBooking(Booking booking, String uname){
+        if(booking instanceof MR_Bookings){
+            saveDR(booking, uname);
+        }else if(booking instanceof MO_Bookings){
+
+        }else if(booking instanceof DR_Booking){
+
+        }else if(booking instanceof DO_Booking){
+
+        }else{
+            return;
+        }
+
+    }
+
+    //Build after M Class bookings are built
+    // private static int saveMR(MR_Booking booking, String uname){
+    //     Connection con = connect();
+
+    //     if(con == null){
+    //         return -1;
+    //     }
+
+    //     String flightPath = "";
+    //     List<Flight> flights = booking.getFlightPath();
+
+    //     for(int i=0; i<flights.size(); i++){
+    //         flightPath += flights.get(i).getID() + ":";
+    //     }
+
+
+    // }
+
+    private static int saveMO(MO_Booking booking, String uname){
         Connection con = connect();
 
         if(con == null){
-            return;
+            return -1;
         }
     }
 
-    
+    private static int saveDR(DR_Booking booking, String uname){
+        Connection con = connect();
+
+        if(con == null){
+            return -1;
+        }
+
+        Flight[] flights = booking.getFlights();
+
+        PreparedStatement statement = con.prepareStatement("insert into (uname, departingFlight, returningFlight, stay) values(" + 
+                                                            uname + flights[0].getID() + flights[1].getID() + booking.stay +")");
+        statement.executeQuery();
+
+        con.close();
+    }
+
+    private static int saveDO(DO_Booking booking, String uname, int stay){
+        Connection con = connect();
+
+        if(con == null){
+            return -1;
+        }
+    }
 }

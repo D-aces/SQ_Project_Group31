@@ -2,8 +2,12 @@ package com.otu.SOFE3980U;
 
 public class DR_Booking implements Booking
 {
-    private Flight[] flights;
-    private int Stay;
+    private Flight[] flights = new Flight[2];
+    int stay;
+
+    public DR_Booking(int stay){
+        this.stay = stay;
+    }
     
     public boolean getTripType()
     {
@@ -22,14 +26,16 @@ public class DR_Booking implements Booking
 
     public void addFlight(Flight origin, Flight destination)
     {
-        flights[0] = origin;
-        flights[1] = destination;
-
-        System.out.println("Flight added:\nOrigin: " + flights[0] + "\nDestination: " + flights[1]); 
+        this.flights[0] = origin;
+        this.flights[1] = destination;
     }
 
     public int getFlightTime()
     {
         return 0;
+    }
+
+    public Flight[] getFlights(){
+        return flights;
     }
 }
