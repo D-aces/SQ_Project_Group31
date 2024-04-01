@@ -1,8 +1,8 @@
-/*
- * Author: Logan Butler
+/**
+ * @author Logan Butler Student#:100828103
  */
 
-package main.java.com.otu.SOFE3980U;
+package com.otu.SOFE3980U;
 
 import java.sql.*;
 import java.io.*;
@@ -17,15 +17,15 @@ class Database{
 
     public static List<Booking> getUserBookings(String uname){
         Connection con = connect();
-        if(con == NULL){
-            return NULL;
+        if(con == null){
+            return null;
         }
 
         //Get all types of bookings
         List<Booking> bookings = new ArrayList<>();
 
         //Get all MR bookings
-        PreparedStatement statement = con.PreparedStatement("select * from MR_Bookings where uname=" + uname);
+        PreparedStatement statement = con.prepareStatement("select * from MR_Bookings where uname=" + uname);
         ResultSet result = statement.executeQuery();
 
         while(result.next){
@@ -42,7 +42,7 @@ class Database{
         }
 
         //Get all MO bookings
-        statement = con.PreparedStatement("select * from MO_Bookings where uname=" + uname);
+        statement = con.prepareStatement("select * from MO_Bookings where uname=" + uname);
         result = statement.executeQuery();
 
         while(result.next()){
@@ -58,7 +58,7 @@ class Database{
         }
 
         //Get all DR bookings
-        statement = con.PreparedStatement("select * from DR_Bookings where uname=" + uname);
+        statement = con.prepareStatement("select * from DR_Bookings where uname=" + uname);
         result = statement.executeQuery();
 
         while(result.next()){
@@ -68,7 +68,7 @@ class Database{
             //Add forming output
         }
 
-        statement = con.PreparedStatement("select * from DO_Bookings where uname=" + uname);
+        statement = con.prepareStatement("select * from DO_Bookings where uname=" + uname);
         result = statement.executeQuery();
 
         while(result.next()){
@@ -80,11 +80,11 @@ class Database{
 
     public static Flight queryFlight(String departing, String destination, int departingTime){
         Connection con = connect();
-        if(con == NULL){
-            return NULL;
+        if(con == null){
+            return null;
         }
 
-        PreparedStatement statement = con.PreparedStatement("select * from Flights where departing=" + departing + " AND destination=" + destination + " AND departingTime=" + departingTime);
+        PreparedStatement statement = con.prepareStatement("select * from Flights where departing=" + departing + " AND destination=" + destination + " AND departingTime=" + departingTime);
         ResultSet result = statement.executeQuery();
 
         con.close();
@@ -92,14 +92,14 @@ class Database{
         if(result.next()){
             return new Flight(departing, destination, departingTime, result.getString("flightTime"));
         }else{
-            return NULL;
+            return null;
         }
     }
 
     public static String[] queryConnectingAirports(String airportName){
         Connectoin con = connect();
 
-        PreparedStatement statement = con.PreparedStatement("select connecting from Airports where port_name=" + airportName);
+        PreparedStatement statement = con.prepareStatement("select connecting from Airports where port_name=" + airportName);
         ResultSet result = statement.executeQuery();
 
         con.close();
@@ -108,7 +108,7 @@ class Database{
             String[] connecting = result.getString("connecting").split(":");
             return connecting;
         }else{
-            return NULL;
+            return null;
         }
 
 
@@ -119,8 +119,10 @@ class Database{
             Connection con = DriverManager.getConnection(url, username, password);
         }catch (SQLException e){
             System.out.println("Connection Error: " + e.getMessage());
-            return NULL;
+            return null;
         }
         return con;
     }
+
+    
 }
