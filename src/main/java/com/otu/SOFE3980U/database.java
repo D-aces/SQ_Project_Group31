@@ -9,6 +9,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 import com.otu.SOFE3980U.DO_Booking;
 import com.otu.SOFE3980U.DR_Booking;
 import com.otu.SOFE3980U.Flight;
@@ -259,5 +261,96 @@ class database{
         return 0;
     }
 
-    
+    public static Booking getBookingByID(int id, String type){
+        Connection con = connect();
+
+        if(con == null){
+            return null;
+        }
+
+        PreparedStatement statement;
+
+        type.toLowerCase();
+
+        switch(type){
+            case "mr":{
+                statement = con.prepareStatement("select * from MR_Bookings where id=" + id);
+                break;
+            }
+            case "mo":{
+                statement = con.prepareStatement("select * from MO_Bookings where id=" + id);
+                break;
+            }
+            case "dr":{
+                statement = con.prepareStatement("select * from DR_Bookings where id=" + id);
+                break;
+            }
+            case "do":{
+                statement = con.prepareStatement("select * from DO_Bookings where id=" + id);
+                break;
+            }
+            default: statement=null;
+        }
+
+        ResultSet result = statement.executeQuery();
+
+        switch(type){
+            case "mr":{
+                MR_Booking booking = new MR_Booking();
+                List<Flight> list1 = makeFlightPath(result.getString("departingPath"));
+                List<Flight> list2 = makeFlightPath(result.getString("returningPath"));
+
+                booking.addFlight(list1.get(0));
+                booking.addFlight(list1.get(1));
+                booking.addFlight(list1.get(2));
+                booking.addFlight(list1.get(3));
+            }
+            case "mo":{
+                MO_Booking booking = new MR_Booking();
+                List<Flight> list = makeFlightPath(result.getString("flightPath"));
+
+                booking.addFlight(list.get(0));
+                booking.addFlight(list.get(1));
+            }
+            case "dr":
+            case "do":
+        }
+    }
+
+    private static List<Flight> makeFlightPath(String path){
+
+        String[] pathList = path.split(":");
+        List<Flights> flights = new ArrayList<Flight>();
+        String queryList;
+        
+        for(int i : pathList){
+            queryList += pathlist[i] + ",";
+        }
+
+        Connection con = connect();
+
+        if(con == null){
+            return null;
+        }
+
+
+            try{
+            PreparedStatement statement = con.prepareStatement("select * from Flights where id in ("+ queryList + ")");
+            ResultSet result = statement.executeQuery();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+
+            try{
+                con.close();
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+            while(result.next()){
+                flights.add(new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id")));
+            }
+
+            return flights;
+ 
+    }
 }

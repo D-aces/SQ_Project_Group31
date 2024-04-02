@@ -13,7 +13,7 @@ public class MR_Booking implements Booking
         new Trip(null, null, 0),//Trip object
         new Trip(null, null, 0)//Trip object
     };//Array of trips
-    public int stay;//Number of days the user will stay at the destination
+    int stay;//Number of days the user will stay at the destination
 
     //Constructor
     public MR_Booking(int stay)

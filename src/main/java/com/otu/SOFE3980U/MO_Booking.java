@@ -13,7 +13,7 @@ import com.otu.SOFE3980U.Trip;
 public class MO_Booking
 {
     private Trip trips = new Trip(null, null, 0);//Trip object
-    public int stay;//Number of days the user will stay at the destination
+    int stay;//Number of days the user will stay at the destination
 
     //Constructor
     public MO_Booking(int stay)

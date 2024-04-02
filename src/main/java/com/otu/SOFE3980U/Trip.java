@@ -64,6 +64,13 @@ public List<Flight> getFlightPath() {
 
 public void setFlightPath(List<Flight> list){
     this.flightPath = list;
+    this.departingAirport = list.get(0).getDepartingAirport();
+    this.finalDestination = list.get(1).getDestinationAirport();
+    this.departingTime = list.get(0).getDepartingTime();
+    
+    for(int i=0; i<list.size(); i++){
+        this.totalTripDuration += list.get(i).getFlightDuration();
+    }
 }
 
 public int getTripDuration(){
