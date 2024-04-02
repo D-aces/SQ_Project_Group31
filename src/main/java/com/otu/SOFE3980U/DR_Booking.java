@@ -10,7 +10,7 @@ import java.util.List;
 public class DR_Booking implements Booking//Direct round-trip booking
 {
     private Flight[] flights = new Flight[2];//Array to store the two flights
-    private int stay;//Number of days the user will stay at the destination
+    public int stay;//Number of days the user will stay at the destination
 
     //Constructor
     public DR_Booking(int stay)
@@ -41,6 +41,7 @@ public class DR_Booking implements Booking//Direct round-trip booking
     public List<Flight> getFlights()
     {
         List<Flight> list = new ArrayList<Flight>();//Create a new list
+        
         if(this.flights[0] != null)//If the first flight is not null
             list.add(this.flights[0]);//Add the first flight to the list
         if(this.flights[1] != null)//If the second flight is not null
