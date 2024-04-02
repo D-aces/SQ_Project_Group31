@@ -1,3 +1,5 @@
+package com.otu.SOFE3980U;
+
 import static org.junit.Assert.*;
 import org.junit.*;
 
@@ -10,8 +12,8 @@ public class DR_BookingTest {
     @Before
     public void setUp() {
         booking = new DR_Booking();
-        flight1 = new Flight("TestFlight1", "TestOrigin1", "TestDestination1", 120);
-        flight2 = new Flight("TestFlight2", "TestOrigin2", "TestDestination2", 180);
+        flight1 = new Flight("TestFlight1", "TestOrigin1", 40, 40, 120);
+        flight2 = new Flight("TestFlight2", "TestOrigin2", 40, 40, 180);
     }
 
     @Test

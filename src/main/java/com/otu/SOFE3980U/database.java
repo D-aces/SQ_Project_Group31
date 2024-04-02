@@ -317,7 +317,7 @@ class database{
             PreparedStatement statement = con.prepareStatement("insert into MO_Bookings (uname, flightPath, departing, destination, departingTime, flightTime) values (" + 
                                                                 uname + departingPath + flights.get(0).getDepartingAirport() + flights.get(1).getDestinationAirport() + flights.get(0).getDepartingTime() + booking.getFlightTime() + ")");
             statement.executeQuery();
-        }catch(SQLDataException e){
+        }catch(SQLException e){
             e.printStackTrace();
             return -1;
         }
