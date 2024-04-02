@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #FF5733, #FF8C33);
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            width: fit-content;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        label {
+            width: 120px;
+            color: black;
+            margin-right: 10px;
+        }
+        
+        input[type="text"],
+        select,
+        input[type="time"],
+        input[type="button"] {
+            flex: 1;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        input[type="button"] {
+            background-color: #FF5733;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        input[type="button"]:hover {
+            background-color: #FF8C33;
+        }
+        
+        #selectionDisplay {
+            background-color: #FFF;
+            color: #333;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Book Your Flight</h2>
+
+    <form id="bookingForm">
+        <div class="input-group">
+            <label for="departingAirport">Departing Airport:</label>
+            <select id="departingAirport" name="departingAirport" required>
+                <option value="">Select an airport</option>
+                <option value="A">Airport A</option>
+                <option value="B">Airport B</option>
+                <option value="C">Airport C</option>
+                <option value="D">Airport D</option>
+                <option value="E">Airport E</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="destinationAirport">Destination Airport:</label>
+            <select id="destinationAirport" name="destinationAirport" required>
+                <option value="">Select an airport</option>
+                <option value="A">Airport A</option>
+                <option value="B">Airport B</option>
+                <option value="C">Airport C</option>
+                <option value="D">Airport D</option>
+                <option value="E">Airport E</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label for="roundTrip">Round-trip:</label>
+            <input type="checkbox" id="roundTrip" name="roundTrip">
+        </div>
+        
+        <input type="button" onclick="displaySelection()" value="Show Selection">
+    </form>
+
+    <div id="selectionDisplay"></div>
+
+    <script>
+        function displaySelection() {
+            var departing = document.getElementById('departingAirport').value;
+            var destination = document.getElementById('destinationAirport').value;
+            var isRoundTrip = document.getElementById('roundTrip').checked;
+            var displayDiv = document.getElementById('selectionDisplay');
+
+            if (!departing || !destination) {
+                displayDiv.innerHTML = "Please select both a departing and destination airport.";
+            } else if (departing === destination) {
+                displayDiv.innerHTML = "Departing and destination airports cannot be the same.";
+            } else {
+                displayDiv.innerHTML = "Departing Airport: " + departing + "<br>Destination Airport: " + destination;
+                if (isRoundTrip) {
+                    displayDiv.innerHTML += "<br><br>Return Trip:<br>Departing Airport: " + destination + "<br>Destination Airport: " + departing;
+                }
+            }
+            displayDiv.style.display = 'block'; // Show the selection div
+        }
+    </script>
+
+</body>
+</html>

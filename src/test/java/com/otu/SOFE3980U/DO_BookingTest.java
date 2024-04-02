@@ -11,7 +11,7 @@ public class DO_BookingTest {
     @Before
     public void setUp() {
         booking = new DO_Booking();
-        flight = new Flight("TestFlight", "TestOrigin", "TestDestination", 120);
+        flight = new Flight("TestFlight", "TestOrigin", 40, 40, 120);
     }
 
     @Test
