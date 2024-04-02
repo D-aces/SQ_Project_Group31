@@ -46,7 +46,7 @@ class TripTest {
         // for other fields, if nessessary
 
         // Call the method under test
-        FlightPath path = tripDao.findFlightPath(...); // Fill in arguments as needed
+        FlightPath path = tripDao.findFlightPath();
 
         // Verify interactions with the mock objects
         verify(stmt, times(1)).executeQuery();
