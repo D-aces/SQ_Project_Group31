@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- Top face -->
+  <polygon fill="#FF5733" points="12,2 2,7 2,17 12,22 22,17 22,7" />
+  <!-- Front face -->
+  <polygon fill="#FF8C33" points="2,7 12,12 22,7 12,2" />
+  <!-- Left face -->
+  <polygon fill="#FFAB91" points="2,7 12,12 12,22 2,17" />
+  <!-- Right face -->
+  <polygon fill="#FFAB91" points="12,12 22,7 22,17 12,22" />
+</svg>
