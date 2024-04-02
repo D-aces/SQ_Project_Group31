@@ -50,7 +50,7 @@ class database{
                 booking.addFlight(temp.get(i));
             }
 
-            booking.stay = result.getInt("stay");
+            ((MR_Booking) booking).setStay(result.getInt("stay"));
 
             list.add(booking);
         }
@@ -89,7 +89,7 @@ class database{
 
             booking.addFlight(f1);
             booking.addFlight(f2);
-            booking.stay = stay;
+            ((DR_Booking) booking).setStay(stay);
 
             list.add(booking);
         }
@@ -111,7 +111,7 @@ class database{
         if(list.size() > 0){
             return list;
         }else{
-            List<Flight> list2 = null;
+            List<Booking> list2 = null;
             return list2;
         }
     }
@@ -209,11 +209,12 @@ class database{
         }
 
         String flightPath = "";
-        List<Flight> flights = booking.getFlightPath();
+        List<Flight> flights = booking.getFlights();
 
         for(int i=0; i<flights.size(); i++){
             flightPath += flights.get(i).getID() + ":";
         }
+		return 0;
 
 
     }
@@ -240,7 +241,7 @@ class database{
         PreparedStatement statement;
 		try {
 			statement = con.prepareStatement("insert into DR_Bookings (uname, departingFlight, returningFlight, stay) values(" + 
-			                                                    uname + flights.get(0).getID() + flights.get(1).getID() + booking.stay +")");
+			                                                    uname + flights.get(0).getID() + flights.get(1).getID() + booking.getStay() +")");
 	        statement.executeQuery();
 
 		} catch (SQLException e) {
@@ -298,12 +299,12 @@ class database{
             return null;
         }
 
-        Booking booking;
+        Booking booking = null;
 
         PreparedStatement statement;
 
         type.toLowerCase();
-
+        try {
         switch(type){
             case "mr":{
                 statement = con.prepareStatement("select * from MR_Bookings where id=" + id);
@@ -324,9 +325,9 @@ class database{
             default: statement=null;
         }
 
-        ResultSet result = statement.executeQuery();
-
-        switch(type){
+        ResultSet result;
+			result = statement.executeQuery();
+	        switch(type){
             case "mr":{
                 booking = new MR_Booking();
                 List<Flight> list1 = makeFlightPath(result.getString("departingPath"));
@@ -337,7 +338,7 @@ class database{
                 booking.addFlight(list1.get(2));
                 booking.addFlight(list1.get(3));
 
-                booking.stay = result.getInt("stay");
+                ((MR_Booking) booking).setStay(result.getInt("stay"));
             }
             case "mo":{
                 booking = new MR_Booking();
@@ -348,36 +349,44 @@ class database{
             }
             case "dr":{
                 booking = new DR_Booking();
-                Flight f1 = makeFlight(result.getString("departingFlight"));
-                Flight f2 = makeFlight(result.getString("returningFlight"));
+                Flight f1 = makeFlight(result.getInt("departingFlight"));
+                Flight f2 = makeFlight(result.getInt("returningFlight"));
 
                 booking.addFlight(f1);
                 booking.addFlight(f2);
 
-                booking.stay = result.getInt("stay");
+                ((DR_Booking) booking).setStay(result.getInt("stay"));
             }
             case "do":{
                 booking = new DO_Booking();
-                Flight f1 = makeFlight(result.getString("departingFlight"));
+                Flight f1 = makeFlight(result.getInt("departingFlight"));
 
                 booking.addFlight(f1);
             }
+            
         }
+	        return booking;
 
-        return booking;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return booking;
+
     }
 
-    private static Flight makeFlight(String id){
+    private static Flight makeFlight(int id){
 
         Connection con = connect();
 
         if(con == null){
             return null;
         }
-
+        
+        ResultSet result = null;
         try{
             PreparedStatement statement = con.prepareStatement("select * from Flights where id=" + id);
-            ResultSet result = statement.executeQuery();
+            result = statement.executeQuery();
         }catch(SQLException e){
             e.printStackTrace();
         }
@@ -388,17 +397,24 @@ class database{
             e.printStackTrace();
         }
 
-        return new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id"));
+        try {
+			return new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id"));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        return null;
     }
 
     private static List<Flight> makeFlightPath(String path){
 
         String[] pathList = path.split(":");
-        List<Flights> flights = new ArrayList<Flight>();
-        String queryList;
+        List<Flight> flights = new ArrayList<Flight>();
+        String queryList = "";
         
-        for(int i : pathList){
-            queryList += pathlist[i] + ",";
+        for(int i=0; i<pathList.length; i++){
+            queryList += pathList[i] + ",";
         }
 
         Connection con = connect();
@@ -407,10 +423,10 @@ class database{
             return null;
         }
 
-
+        ResultSet result = null;
             try{
             PreparedStatement statement = con.prepareStatement("select * from Flights where id in ("+ queryList + ")");
-            ResultSet result = statement.executeQuery();
+            result = statement.executeQuery();
             }catch (SQLException e){
                 e.printStackTrace();
             }
@@ -420,9 +436,14 @@ class database{
             }catch (SQLException e){
                 e.printStackTrace();
             }
-            while(result.next()){
-                flights.add(new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id")));
-            }
+            try {
+				while(result.next()){
+				    flights.add(new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id")));
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
             return flights;
  

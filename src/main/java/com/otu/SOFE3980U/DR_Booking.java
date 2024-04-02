@@ -10,13 +10,21 @@ import java.util.List;
 public class DR_Booking implements Booking//Direct round-trip booking
 {
     private Flight[] flights = new Flight[2];//Array to store the two flights
-    int stay;//Number of days the user will stay at the destination
+    private int stay;//Number of days the user will stay at the destination
     
     /* Getters */
     //Get the type of trip
     public boolean getTripType()
     {
         return false;
+    }
+    
+    public int getStay() {
+    	return stay;
+    }
+    
+    public void setStay(int stay) {
+    	this.stay = stay;
     }
 
     //Get if the trip is one way

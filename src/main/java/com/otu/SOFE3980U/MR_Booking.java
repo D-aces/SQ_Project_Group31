@@ -13,13 +13,21 @@ public class MR_Booking implements Booking
         new Trip(null, null, 0),//Trip object
         new Trip(null, null, 0)//Trip object
     };//Array of trips
-    int stay;//Number of days the user will stay at the destination
+    private int stay;//Number of days the user will stay at the destination
 
     /* Getters */
     //Get the type of trip
     public boolean getTripType()
     {
         return true;
+    }
+    
+    public int getStay() {
+    	return stay;
+    }
+    
+    public void setStay(int stay) {
+    	this.stay = stay;
     }
 
     //Get if the trip is one way

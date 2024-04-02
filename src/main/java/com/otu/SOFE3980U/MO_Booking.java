@@ -10,7 +10,7 @@ import java.util.List;
 import com.otu.SOFE3980U.Flight;
 import com.otu.SOFE3980U.Trip;
 
-public class MO_Booking
+public class MO_Booking implements Booking
 {
     private Trip trips = new Trip(null, null, 0);//Trip object
 
