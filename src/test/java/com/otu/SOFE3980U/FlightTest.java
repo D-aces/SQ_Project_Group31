@@ -13,63 +13,29 @@ public class FlightTest
 {
    
 
-    /*
-     * This is a test for the arrival time function.
-     * 
-     * @param assertTrue
-     */
-    public void testArrivalTime() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getArrivalTime() == 100840);
-    }
-
-    /*
-     * This is a test for the departing airport function.
-     * 
-     * @param assertEquals
-     */
+    @Test
     public void testDepartAirport() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getDepartingAirport().equals("Toronto"));
+    	Flight flight = new Flight('A', 'B', 21600, 1);
+        assertTrue(flight.getDepartingAirport().equals("A"));
     }
 
-    /*
-     * This is a test for the destination airport function.
-     * 
-     * @param assertTrue
-     */
+    @Test
     public void testDestAirport() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getDestinationAirport().equals("Beijing"));
+    	Flight flight = new Flight('A', 'B', 21600, 1);
+        assertTrue(flight.getDestinationAirport().equals("B"));
     }
 
-    /*
-     * This is a test for the departing time function.
-     * 
-     * @param assertTrue
-     */
+    @Test
     public void testDeptTime() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getDepartingTime() == 40000);
+    	Flight flight = new Flight('A', 'B', 21600, 1);
+        assertTrue(flight.getDepartingTime() == 21600);
     }
 
-    /*
-     * This is a test for the flight duration function.
-     * 
-     * @param assertTrue
-     */
+    @Test
     public void testFlightDuration() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getFlightDuration() == 60840);
+    	Flight flight = new Flight('A', 'B', 21600, 1);
+        assertTrue(flight.getFlightDuration() == 1);
     }
 
-    /*
-     * This is a test for the ID function.
-     * 
-     * @param assertTrue
-     */
-    public void testID() {
-    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
-        assertTrue(flight.getID() == 69);
-    }
+    
 }
