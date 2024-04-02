@@ -1,41 +1,44 @@
 package com.otu.SOFE3980U;
 
 import static org.junit.Assert.*;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.*;
 
-/**
- * @author SQ Group 31, Rolf-Jaden Sibal
- *
- */
-public class FlightTest 
-{
-   
+public class FlightTest {
 
-    @Test
-    public void testDepartAirport() {
-    	Flight flight = new Flight('A', 'B', 21600, 1);
-        assertTrue(flight.getDepartingAirport().equals("A"));
+    private Flight flight;
+
+    @Before
+    public void setUp() {
+        flight = new Flight("AirportA", "AirportB", 1000, 120, 12345);
     }
 
     @Test
-    public void testDestAirport() {
-    	Flight flight = new Flight('A', 'B', 21600, 1);
-        assertTrue(flight.getDestinationAirport().equals("B"));
+    public void testGetArrivalTime() {
+        assertEquals(1120, flight.getArrivalTime()); // Assuming departing time is 1000 and flight duration is 120
     }
 
     @Test
-    public void testDeptTime() {
-    	Flight flight = new Flight('A', 'B', 21600, 1);
-        assertTrue(flight.getDepartingTime() == 21600);
+    public void testGetDepartingAirport() {
+        assertEquals("AirportA", flight.getDepartingAirport());
     }
 
     @Test
-    public void testFlightDuration() {
-    	Flight flight = new Flight('A', 'B', 21600, 1);
-        assertTrue(flight.getFlightDuration() == 1);
+    public void testGetDestinationAirport() {
+        assertEquals("AirportB", flight.getDestinationAirport());
     }
 
-    
+    @Test
+    public void testGetDepartingTime() {
+        assertEquals(1000, flight.getDepartingTime());
+    }
+
+    @Test
+    public void testGetFlightDuration() {
+        assertEquals(120, flight.getFlightDuration());
+    }
+
+    @Test
+    public void testGetID() {
+        assertEquals(12345, flight.getID());
+    }
 }
