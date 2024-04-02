@@ -2,7 +2,7 @@ package com.otu.SOFE3980U;
 
 /**
  * @author SQ Group 31
- *
+ * Boi
  */
 public interface Booking
 {
