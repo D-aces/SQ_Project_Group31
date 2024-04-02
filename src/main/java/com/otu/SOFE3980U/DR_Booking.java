@@ -1,5 +1,7 @@
 package com.otu.SOFE3980U;
 
+import java.util.ArrayList;
+
 public class DR_Booking implements Booking
 {
     private Flight[] flights = new Flight[2];
@@ -38,8 +40,14 @@ public class DR_Booking implements Booking
         return 0;
     }
 
-    public Flight[] getFlights()
+    public List<Flight> getFlights()
     {
-        return flights;
+        List<Flight> list = new ArrayList<>();
+        if(this.flights[0] != null){
+            list.add(this.flights[0]);
+            list.add(this.flights[1]);
+        }
+
+        return list;
     }
 }

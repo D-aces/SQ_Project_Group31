@@ -60,6 +60,14 @@ public class Trip {
 
 public List<Flight> getFlightPath() {
         return flightPath;
-    }
+}
+
+public void setFlightPath(List<Flight> list){
+    this.flightPath = list;
+}
+
+public int getTripDuration(){
+    return this.totalTripDuration;
+}
 
 }

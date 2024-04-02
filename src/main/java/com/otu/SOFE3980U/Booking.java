@@ -11,5 +11,5 @@ public interface Booking
 	public boolean getOneWay();
 	public void addFlight(Flight flight);
 	public int getFlightTime();
-	public Flight[] getFlights();
+	public List<Flight> getFlights();
 }
