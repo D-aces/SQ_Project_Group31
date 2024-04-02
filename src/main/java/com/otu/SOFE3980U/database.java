@@ -24,23 +24,35 @@ class database{
         }
 
         //Get all types of bookings
-        List<Booking> bookings = new ArrayList<Booking>();
+        List<Booking> list = new ArrayList<Booking>();
 
         //Get all MR bookings
         PreparedStatement statement = con.prepareStatement("select * from MR_Bookings where uname=" + uname);
         ResultSet result = statement.executeQuery();
 
         while(result.next()){
-            String flights = result.getString("flightPath");
-            String departing = result.getString("departing");
-            String destination = result.getString("destination");
+            String departingPath = result.getString("flightPath");
+            String returningPath = result.getString("returningPath");
             int departingTime = result.getInt("departingTime");
             int flightTime = result.getInt("flightTime");
 
-            //Add creation of a booking object
+            Booking booking = new MR_Booking();
 
-            //Add forming output
-            
+            List<Flight> temp = makeFlightPath(departingPath);
+
+            for(int i=0; i<temp.size(); i++){
+                booking.addFlight(temp.get(i));
+            }
+
+            temp = makeFlightPath(returningPath);
+
+            for(int i=0; i<temp.size(); i++){
+                booking.addFlight(temp.get(i));
+            }
+
+            booking.stay = result.getInt("stay");
+
+            list.add(booking);
         }
 
         //Get all MO bookings
@@ -49,14 +61,18 @@ class database{
 
         while(result.next()){
             String flights = result.getString("flightPath");
-            String departing = result.getString("departing");
-            String destination = result.getString("destination");
             int departingTime = result.getInt("departingtime");
             int flightTime = result.getInt("flightTime");
 
-            //Add creation of a booking object
+            Booking booking = new MO_Booking();
 
-            //Add forming output
+            List<Flight> temp = makeFlightPath(flights);
+
+            for(int i=0; i<temp.size(); i++){
+                booking.addFlight(temp.get(i));
+            }
+
+            list.add(booking);
         }
 
         //Get all DR bookings
@@ -64,22 +80,40 @@ class database{
         result = statement.executeQuery();
 
         while(result.next()){
-            //Add Flight conversion
+            Flight f1 = makeFlight(result.getInt("departingFlight"));
+            Flight f2 = makeFlight(result.getInt("returningFlight"));
 
             int stay = result.getInt("stay");
-            //Add forming output
+
+            Booking booking = new DR_Booking();
+
+            booking.addFlight(f1);
+            booking.addFlight(f2);
+            booking.stay = stay;
+
+            list.add(booking);
         }
 
         statement = con.prepareStatement("select * from DO_Bookings where uname=" + uname);
         result = statement.executeQuery();
 
         while(result.next()){
-            //Add flight conversion
+            Flight f1 = makeFlight(result.getInt("departingFlight"));
 
-            //Add forming output
-            //bookings.add(?)
+            Booking booking = new DO_Booking();
+
+            booking.addFlight(f1);
+
+            list.add(booking);
         }
-		return null;
+		
+
+        if(list.size() > 0){
+            return list;
+        }else{
+            List<Flight> list2 = null;
+            return list2;
+        }
     }
 
     public static Flight queryFlight(String departing, String destination, int departingTime){
@@ -167,22 +201,22 @@ class database{
     }
 
     //Build after M Class bookings are built
-    // private static int saveMR(MR_Booking booking, String uname){
-    //     Connection con = connect();
+    private static int saveMR(MR_Booking booking, String uname){
+        Connection con = connect();
 
-    //     if(con == null){
-    //         return -1;
-    //     }
+        if(con == null){
+            return -1;
+        }
 
-    //     String flightPath = "";
-    //     List<Flight> flights = booking.getFlightPath();
+        String flightPath = "";
+        List<Flight> flights = booking.getFlightPath();
 
-    //     for(int i=0; i<flights.size(); i++){
-    //         flightPath += flights.get(i).getID() + ":";
-    //     }
+        for(int i=0; i<flights.size(); i++){
+            flightPath += flights.get(i).getID() + ":";
+        }
 
 
-    // }
+    }
 
     private static int saveMO(/*MO_Booking booking,*/ String uname){
         Connection con = connect();
