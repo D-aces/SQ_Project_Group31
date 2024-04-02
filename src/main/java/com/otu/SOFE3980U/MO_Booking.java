@@ -1,3 +1,12 @@
+/**
+ * @author: Noah Tomah - 100825559
+ */
+
+ package com.otu.SOFE3980U;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MO_Booking
 {
     private Flight[] flights = new Flight[1];
