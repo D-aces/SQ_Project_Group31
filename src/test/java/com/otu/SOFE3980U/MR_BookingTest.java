@@ -12,8 +12,8 @@ public class MR_BookingTest {
     @Before
     public void setUp() {
         booking = new MR_Booking();
-        flight1 = new Flight("TestFlight1", "TestOrigin1", "TestDestination1", 120);
-        flight2 = new Flight("TestFlight2", "TestOrigin2", "TestDestination2", 180);
+        flight1 = new Flight("TestFlight1", "TestOrigin1", 40, 40, 120);
+        flight2 = new Flight("TestFlight2", "TestOrigin2", 40, 40, 180);
     }
 
     @Test
