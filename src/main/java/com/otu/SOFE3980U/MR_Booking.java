@@ -64,10 +64,4 @@ public class MR_Booking implements Booking{
 
         return list;
     }
-
-	@Override
-	public void getTicket(Booking booking) 
-    {
-		// TODO Auto-generated method stub
-	}
 }
