@@ -11,8 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class AppController {
-	
+public class AppController
+{
 	//TODO: Might need to add the userID param here (not sure how authentication is working rn
     @GetMapping("/bookingtool")
     public String book() {
