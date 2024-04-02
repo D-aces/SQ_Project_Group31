@@ -11,14 +11,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class BookingController {
+public class AppController {
 	
 	//TODO: Might need to add the userID param here (not sure how authentication is working rn
     @GetMapping("/bookingtool")
-    public String book(
-    		@RequestParam(name="airports", required=false, defaultValue="") List<String> airports, Model model) {
-        model.addAttribute("airports", airports);
-        model.addAttribute("airportsLoaded", !airports.isEmpty());
+    public String book() {
         return "booking";
     }
     
