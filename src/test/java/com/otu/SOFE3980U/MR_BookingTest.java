@@ -59,7 +59,7 @@ public class MR_BookingTest {
     public void testAddFlightLimit() {
         booking.addFlight(flight1);
         booking.addFlight(flight2);
-        Flight flight3 = new Flight("TestFlight3", "TestOrigin3", "TestDestination3", 150);
+        Flight flight3 = new Flight("TestFlight3", "TestOrigin3", 40, 40, 150);
         booking.addFlight(flight3); // Adding a third flight should not be allowed
         assertEquals(2, booking.getFlights().size()); // Assuming only two flights can be added
     }
