@@ -233,7 +233,7 @@ class database{
         // TODO Create MR_Bookings and MO_Bookings classs
     	if(booking instanceof MR_Booking){
             saveMR((MR_Booking)booking, uname);
-        }else if(booking instanceof MO_Bookings){
+        }else if(booking instanceof MO_Booking){
             saveMO((MO_Booking)booking, uname);
         }else if(booking instanceof DR_Booking){
             saveDR((DR_Booking)booking, uname);
@@ -274,7 +274,7 @@ class database{
 
         try{
         PreparedStatement statement = con.prepareStatement("insert into MR_Bookings (uname, departingPath, returningPath, departing, destination, departingTime, flightTime, stay) values(" + 
-			                                                    uname + departingPath + returningPath + flights.get(0).getDepartingAirport + flights.get(flights.size()-1).getDestinationAirport() + flights.get(0).getDepartingTime() + booking.getFlightTime() + booking.getStay() +")");
+			                                                    uname + departingPath + returningPath + flights.get(0).getDepartingAirport() + flights.get(flights.size()-1).getDestinationAirport() + flights.get(0).getDepartingTime() + booking.getFlightTime() + booking.getStay() +")");
         statement.executeQuery();                                                          
         }catch(SQLException e){
             e.printStackTrace();
