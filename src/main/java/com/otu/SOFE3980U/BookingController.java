@@ -2,16 +2,17 @@ package com.otu.SOFE3980U;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.otu.SOFE3980U.Booking;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BookingController {
+	
 	//TODO: Might need to add the userID param here (not sure how authentication is working rn
     @GetMapping("/bookingtool")
     public String book(

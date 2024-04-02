@@ -4,8 +4,9 @@
 package com.otu.SOFE3980U;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MR_Booking implements booking{
+public class MR_Booking implements Booking{
 
     private Trip[] trips = new Trip[2];
     int stay = 0;
@@ -55,4 +56,10 @@ public class MR_Booking implements booking{
 
         return list;
     }
+
+	@Override
+	public void getTicket(Booking booking) {
+		// TODO Auto-generated method stub
+		
+	}
 }

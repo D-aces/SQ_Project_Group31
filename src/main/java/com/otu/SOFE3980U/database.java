@@ -203,7 +203,7 @@ class database{
             return -1;
         }
 
-        Flight[] flights = booking.getFlights();
+        List<Flight> flights = booking.getFlights();
 
         PreparedStatement statement;
 		try {
@@ -236,7 +236,7 @@ class database{
             return -1;
         }
 
-        Flight[] flights = booking.getFlights();
+        List<Flight> flights = booking.getFlights();
 
         PreparedStatement statement;
 		try {
