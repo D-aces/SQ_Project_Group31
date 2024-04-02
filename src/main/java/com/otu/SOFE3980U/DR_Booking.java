@@ -29,7 +29,7 @@ public class DR_Booking implements Booking
 
     public void getTicket(Booking booking)
     {
-        System.out.println("Ticket");
+        return;
     }
 
     public void addFlight(Flight origin)
@@ -42,13 +42,14 @@ public class DR_Booking implements Booking
 
     public int getFlightTime()
     {
-        return 0;
+        return (flight[0].getDuration() + flight[1].getDuration());
     }
 
     public List<Flight> getFlights()
     {
         List<Flight> list = new ArrayList<>();
-        if(this.flights[0] != null){
+        if(this.flights[0] != null)
+        {
             list.add(this.flights[0]);
             list.add(this.flights[1]);
         }
