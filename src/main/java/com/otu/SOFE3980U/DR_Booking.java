@@ -47,7 +47,7 @@ public class DR_Booking implements Booking
 
     public List<Flight> getFlights()
     {
-        List<Flight> list = new ArrayList<>();
+        List<Flight> list = new ArrayList<Flight>();
         if(this.flights[0] != null)
         {
             list.add(this.flights[0]);
