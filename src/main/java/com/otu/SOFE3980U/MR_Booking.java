@@ -8,7 +8,11 @@ import java.util.List;
 
 public class MR_Booking implements Booking
 {
-    private Trip[] trips = new Trip[2];//Array of trips
+    private Trip[] trips =
+    {
+        new Trip(null, null, 0),//Trip object
+        new Trip(null, null, 0)//Trip object
+    };//Array of trips
     public int stay;//Number of days the user will stay at the destination
 
     //Constructor

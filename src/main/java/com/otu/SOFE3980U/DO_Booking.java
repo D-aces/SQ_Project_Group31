@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DO_Booking implements Booking
 {
-    private Flight flight = new Flight();//Flight object to store the flight
+    private Flight flight = new Flight(null, null, 0, 0, 0);//Flight object
     public int stay;//Number of days the user will stay at the destination
 
     //Constructor

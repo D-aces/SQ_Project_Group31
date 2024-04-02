@@ -12,7 +12,7 @@ import com.otu.SOFE3980U.Trip;
 
 public class MO_Booking
 {
-    private Trip[] trips = new Trip[1];//Array of trips
+    private Trip trips = new Trip(null, null, 0);//Trip object
     public int stay;//Number of days the user will stay at the destination
 
     //Constructor
@@ -37,7 +37,7 @@ public class MO_Booking
     //Get the total flight time
     public int getFlightTime()
     {
-        return trips[0].getTripDuration();
+        return trips.getTripDuration();
     }
 
     //Get the list of flights
@@ -45,17 +45,17 @@ public class MO_Booking
     {
         List<Flight> list = new ArrayList<Flight>();//Create a new list
         
-        if (trips[0] == null)//If the trip is null
-            list.addAll(trips[0].getFlightPath());//Add the flights from the first trip
+        if (trips == null)//If the trip is null
+            list.addAll(trips.getFlightPath());//Add the flights from the first trip
 
         return list;//Return the list
     }
 
     /* Setters */
     //Set the list of trips
-    public void addFlight(Flight flight)
+    public void addFlight(Trip trips)
     {
-        if(flights[0] == null)//If the flight is null
-            this.flights[0] = flight;//Set the flight to the origin
+        if(trips == null)//If the flight is null
+            this.trips = trips;//Set the flight to the origin
     }
 }
