@@ -1,7 +1,7 @@
 package com.otu.SOFE3980U;
 
 /**
- * @author SQ Group 31
+ * @author SQ Group 31, Rolf-Jaden Sibal
  *
  */
 public class Flight {

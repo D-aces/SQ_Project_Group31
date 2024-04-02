@@ -5,6 +5,10 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
+/**
+ * @author SQ Group 31, Rolf-Jaden Sibal
+ *
+ */
 public class FlightTest 
 {
     Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
