@@ -15,6 +15,12 @@ public class MO_Booking
     private Trip trips = new Trip(null, null, 0);//Trip object
     public int stay;//Number of days the user will stay at the destination
 
+    //Constructor
+    public MO_Booking(int stay)
+    {
+        this.stay = stay;
+    }
+
     /* Getters */
     //Get the type of trip
     public boolean getTripType()

@@ -15,6 +15,12 @@ public class MR_Booking implements Booking
     };//Array of trips
     public int stay;//Number of days the user will stay at the destination
 
+    //Constructor
+    public MR_Booking(int stay)
+    {
+        this.stay = stay;
+    }
+
     /* Getters */
     //Get the type of trip
     public boolean getTripType()
