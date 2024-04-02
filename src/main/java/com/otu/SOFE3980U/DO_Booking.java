@@ -9,42 +9,48 @@ import java.util.List;
 
 public class DO_Booking implements Booking
 {
-    private Flight[] flight = new Flight[1];
+    private Flight flight = new Flight();//Flight object to store the flight
+    private int stay;//Number of days the user will stay at the destination
 
+    //Constructor
+    public DO_Booking(int stay)
+    {
+        this.stay = stay;
+    }
+
+    /* Getters */
+    //Get the type of trip
     public boolean getTripType()
     {
         return false;
     }
 
+    //Get if the trip is one way
     public boolean getOneWay()
     {
         return true;
     }
 
-    public void getTicket(Booking booking)
-    {
-        System.out.println();
-    }
-
-    public void addFlight(Flight origin)
-    {      
-        if(flight[0] == null)
-            this.flight[0] = origin;
-    }
-
+    //Get the total flight time
     public int getFlightTime()
     {
-        return 0;
+        return flight.getFlightDuration();
     }
 
+    //Get the list of flights
     public List<Flight> getFlights()
     {
         List<Flight> list= new ArrayList<>();
 
-        if(this.flight[0] != null){
-            list.add(flight[0]);
-        }
+        if(this.flight != null)
+            list.add(flight);
 
         return list;
+    }
+
+    public void addFlight(Flight origin)
+    {      
+        if(flight == null)
+            this.flight = origin;
     }
 }
