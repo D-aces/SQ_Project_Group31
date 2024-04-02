@@ -30,7 +30,7 @@ jobs:
         mvn -B clean install --file pom.xml
         mvn -B deploy -s ${{ github.workspace }}/settings.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}
 
 
 # Note: Secrets.GITHUB_TOKEN is automatically created by GitHub Actions and does not need to be manually created.
