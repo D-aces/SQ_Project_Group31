@@ -11,7 +11,7 @@ public class Trip {
     private String departingAirport;
     private String finalDestination;
     private int departingTime;
-    private List<Flight> flightPath; // Will be a list of Flight objects
+    private List<Flight> flightPath = new ArrayList<Flight>(); // Will be a list of Flight objects
 
     // Constructor
     public Trip(String departingAirport, String finalDestination, int departingTime) {

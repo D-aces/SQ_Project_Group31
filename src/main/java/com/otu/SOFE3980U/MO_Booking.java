@@ -46,9 +46,13 @@ public class MO_Booking
 
     /* Setters */
     //Set the list of trips
-    public void addFlight(Trip trips)
+    public void addFlight(Flight flight)
     {
-        if(trips == null)//If the flight is null
-            this.trips = trips;//Set the flight to the origin
+        List<Flight> list = trips.getFlightPath();
+
+        if(list.size() < 2){
+            list.add(flight);
+            trips.setFlightPath(list);
+        }
     }
 }

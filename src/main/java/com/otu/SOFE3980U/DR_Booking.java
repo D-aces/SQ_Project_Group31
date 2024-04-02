@@ -9,11 +9,7 @@ import java.util.List;
 
 public class DR_Booking implements Booking//Direct round-trip booking
 {
-    private Flight[] flights = 
-    {
-        new Flight(null, null, 0, 0, 0),//Flight object
-        new Flight(null, null, 0, 0, 0)//Flight object
-    };//Array to store the two flights
+    private Flight[] flights = new Flight[2];//Array to store the two flights
     int stay;//Number of days the user will stay at the destination
     
     /* Getters */

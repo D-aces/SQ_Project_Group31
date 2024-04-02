@@ -9,7 +9,7 @@ import java.util.List;
 
 public class DO_Booking implements Booking
 {
-    private Flight flight = new Flight(null, null, 0, 0, 0);//Flight object
+    private Flight flight;//Flight object
 
     /* Getters */
     //Get the type of trip
