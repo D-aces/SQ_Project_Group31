@@ -12,11 +12,28 @@ import java.util.List;
 import javax.naming.spi.DirStateFactory.Result;
 
 class database{
-
+    /**
+     * The username for connecting to the database.
+     */
     private static String username = "quality";
+
+    /**
+     * The password for connecting to the database.
+     */
     private static String password = "quality";
+
+    /**
+     * The URL for connecting to the database.
+     */
     private static String url = "jdbc:mysql://localhost:3306/quality_project";
 
+    /**
+     * Retrieves bookings for a given user.
+     *
+     * @param uname The username of the user whose bookings are to be retrieved.
+     * @return A list of Booking objects representing the user's bookings, or null if no bookings are found.
+     * @throws SQLException If an SQL exception occurs while accessing the database.
+     */
     public static List<Booking> getUserBookings(String uname) throws SQLException{
         Connection con = connect();
         if(con == null){
@@ -116,6 +133,14 @@ class database{
         }
     }
 
+    /**
+     * Queries a flight based on departing airport, destination airport, and departing time.
+     *
+     * @param departing     The departing airport code.
+     * @param destination   The destination airport code.
+     * @param departingTime The departing time of the flight.
+     * @return A Flight object representing the queried flight, or null if no flight is found.
+     */
     public static Flight queryFlight(String departing, String destination, int departingTime){
         Connection con = connect();
         ResultSet result;
@@ -156,6 +181,13 @@ class database{
 		}
     }
 
+    /**
+     * Queries connecting airports for a given airport.
+     *
+     * @param airportName The name of the airport.
+     * @return An array of strings representing the names of connecting airports, or null if no connecting airports are found.
+     * @throws SQLException If an SQL exception occurs while accessing the database.
+     */
     public static String[] queryConnectingAirports(String airportName) throws SQLException{
         Connection con = connect();
 
@@ -174,6 +206,12 @@ class database{
 
     }
 
+    /**
+     * Saves a booking for a user.
+     *
+     * @param booking The Booking object to be saved.
+     * @param uname   The username of the user for whom the booking is saved.
+     */
     private static Connection connect(){
         try{
             Connection con = DriverManager.getConnection(url, username, password);
@@ -184,23 +222,31 @@ class database{
         }
     }
 
+    /**
+     * Retrieves a booking by its ID and type.
+     *
+     * @param id   The ID of the booking.
+     * @param type The type of the booking (e.g., "MR", "MO", "DR", "DO").
+     * @return A Booking object representing the booking with the specified ID and type, or null if not found.
+     */
     public static void saveBooking(Booking booking, String uname){
         // TODO Create MR_Bookings and MO_Bookings classs
-    	//if(booking instanceof MR_Bookings){
-            //saveDR(booking, uname);
-        /*}else if(booking instanceof MO_Bookings){
-
-        }else*/ if(booking instanceof DR_Booking){
-
+    	if(booking instanceof MR_Bookings){
+            saveMR(booking, uname);
+        }else if(booking instanceof MO_Bookings){
+            saveMO(booking, uname);
+        }else if(booking instanceof DR_Booking){
+            saveDR(booking, uname);
         }else if(booking instanceof DO_Booking){
-
+            saveDO(booking, uname);
         }else{
             return;
         }
 
     }
 
-    //Build after M Class bookings are built
+
+    
     private static int saveMR(MR_Booking booking, String uname){
         Connection con = connect();
 
@@ -208,24 +254,67 @@ class database{
             return -1;
         }
 
-        String flightPath = "";
+        String departingPath = "";
+        String returningPath = "";
         List<Flight> flights = booking.getFlights();
 
-        for(int i=0; i<flights.size(); i++){
-            flightPath += flights.get(i).getID() + ":";
+        for(int i=0; i<flights.size()/2; i++){
+            departingPath += flights.get(i).getID() + ":";
         }
-		return 0;
 
+        for(int i=flights.size()/2; i<flights.size(); i++){
+            returningPath += flights.get(i).getID() + ":";
+        }
 
+        try{
+        PreparedStatement statement = con.prepareStatement("insert into MR_Bookings (uname, departingPath, returningPath, departing, destination, departingTime, flightTime, stay) values(" + 
+			                                                    uname + departingPath + returningPath + flights.get(0).getDepartingAirport + flights.get(flights.size()-1).getDestinationAirport() + flights.get(0).getDepartingTime() + booking.getFlightTime() + booking.getStay() +")");
+        statement.executeQuery();                                                          
+        }catch(SQLException e){
+            e.printStackTrace();
+            return -1;
+        }
+
+        try{
+            con.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+            return -1;
+        }
+
+        return 0;
     }
 
-    private static int saveMO(/*MO_Booking booking,*/ String uname){
+    private static int saveMO(MO_Booking booking, String uname){
         Connection con = connect();
 
         if(con == null){
             return -1;
         }
-        // TEMP RETURN
+        
+
+        String departingPath = "";
+        List<Flight> flights = booking.getFlights();
+
+        for(int i=0; i<flights.size(); i++){
+            departingPath += flights.get(i).getID() + ":";
+        }
+
+        try{
+            PreparedStatement statement = con.prepareStatement("insert into MO_Bookings (uname, flightPath, departing, destination, departingTime, flightTime) values (" + 
+                                                                uname + departingPath + flights.get(0).getDepartingAirport() + flights.get(1).getDestinationAirport() + flights.get(0).getDepartingTime + booking.getFlightTime() + ")");
+            statement.executeQuery();
+        }catch(SQLDataException e){
+            e.printStackTrace();
+            return -1;
+        }
+
+        try{
+            con.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+            return -1;
+        }
 		return 0;
     }
 
