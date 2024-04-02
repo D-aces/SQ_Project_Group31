@@ -7,7 +7,6 @@ import java.util.List;
  */
 public interface Booking
 {
-	public void getTicket();
 	public boolean getTripType();
 	public boolean getOneWay();
 	public void addFlight(Flight flight);
