@@ -13,7 +13,6 @@ public class MR_Booking implements Booking{
 
     public void getTicket()
     {
-
         return;
     }
 
