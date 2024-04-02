@@ -42,7 +42,7 @@ public class DR_Booking implements Booking
 
     public int getFlightTime()
     {
-        return (flight[0].getDuration() + flight[1].getDuration());
+        return (flights[0].getFlightDuration() + flights[1].getFlightDuration());
     }
 
     public List<Flight> getFlights()
