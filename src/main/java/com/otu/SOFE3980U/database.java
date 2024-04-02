@@ -246,7 +246,13 @@ class database{
     }
 
 
-    
+    /**
+     * Saves a MR booking object into the database
+     * 
+     * @param booking A booking object of type MR
+     * @param uname Name of the user that the booking belongs to
+     * @return return integer based of success
+     */
     private static int saveMR(MR_Booking booking, String uname){
         Connection con = connect();
 
@@ -285,6 +291,13 @@ class database{
         return 0;
     }
 
+    /**
+     * Saves a MO booking object into the database
+     * 
+     * @param booking A booking object of type MR
+     * @param uname Name of the user that the booking belongs to
+     * @return return integer based of success
+     */
     private static int saveMO(MO_Booking booking, String uname){
         Connection con = connect();
 
@@ -318,6 +331,13 @@ class database{
 		return 0;
     }
 
+    /**
+     * Saves a DR booking object into the database
+     * 
+     * @param booking A booking object of type MR
+     * @param uname Name of the user that the booking belongs to
+     * @return return integer based of success
+     */
     private static int saveDR(DR_Booking booking, String uname){
         Connection con = connect();
 
@@ -351,6 +371,13 @@ class database{
         return 0;
     }
 
+    /**
+     * Saves a DO booking object into the database
+     * 
+     * @param booking A booking object of type MR
+     * @param uname Name of the user that the booking belongs to
+     * @return return integer based of success
+     */
     private static int saveDO(DO_Booking booking, String uname){
         Connection con = connect();
 
@@ -381,6 +408,13 @@ class database{
         return 0;
     }
 
+    /**
+     * Generates and returns a booking object
+     * 
+     * @param id    the ID of the booking 
+     * @param type  the type of booking
+     * @return   a booking object
+     */
     public static Booking getBookingByID(int id, String type){
         Connection con = connect();
 
@@ -464,6 +498,12 @@ class database{
 
     }
 
+    /**
+     * Creats flight objects based on ID
+     * 
+     * @param id ID of the flight
+     * @return  a flight object
+     */
     private static Flight makeFlight(int id){
 
         Connection con = connect();
@@ -496,6 +536,12 @@ class database{
         return null;
     }
 
+    /**
+     * Makes a list of flights based on a path
+     * 
+     * @param path the path of the flights
+     * @return   a list of flights
+     */
     private static List<Flight> makeFlightPath(String path){
 
         String[] pathList = path.split(":");
