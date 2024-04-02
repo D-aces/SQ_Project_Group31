@@ -24,13 +24,13 @@ class TripTest {
     @Mock
     private ResultSet rs;
 
-    private Tripdao tripDao; // Assuming TripDao is similar to PersonDao for Trip objects
+    private Trip tripDao; // Assuming TripDao is similar to PersonDao for Trip objects
 
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
         when(ds.getConnection()).thenReturn(connection);
-        tripDao = new TripDao(ds); // Assuming TripDao has a constructor that accepts DataSource
+        tripDao = new Trip(ds); // Assuming TripDao has a constructor that accepts DataSource
     }
 
     @Test
