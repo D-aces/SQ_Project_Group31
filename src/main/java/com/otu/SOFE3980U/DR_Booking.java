@@ -55,6 +55,7 @@ public class DR_Booking implements Booking//Direct round-trip booking
         return list;//Return the list
     }
 
+    /* Setters */
     //Add a flight to the booking
     public void addFlight(Flight origin)
     {
