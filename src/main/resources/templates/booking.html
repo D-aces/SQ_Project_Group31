@@ -75,10 +75,10 @@
 </head>
 <body>
     <h2>Book Your Flight</h2>
-    <form action="#" th:action="@{/bookFlight}" th:object="${flight}" method="post">
+    <form action="#" th:action="@{/bookFlight}" th:object="${Booking}" method="post">
         <div class="input-group">
-            <input type="text" id="departingAirport" name="departingAirport" th:field="*{departingAirport}" placeholder="Departing Airport" required>
-            <input type="text" id="destinationAirport" name="destinationAirport" th:field="*{destinationAirport}" placeholder="Destination Airport" required>
+            <input type="text" id="departingAirport" name="departingAirport" th:field="*{airports}" placeholder="Departing Airport" required>
+            <input type="text" id="destinationAirport" name="destinationAirport" th:field="*{airports}" placeholder="Destination Airport" required>
         </div>
         
         <div class="input-group">
