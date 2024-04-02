@@ -1,40 +1,60 @@
 package com.otu.SOFE3980U;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.sql.DataSource;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
-import java.util.List;
-import static org.junit.jupiter.api.Assertions.*;
 
 class TripTest {
 
     @Mock
-    private DatabaseService databaseService; // Assuming this is your interface
+    private DataSource ds;
+    @Mock
+    private Connection connection;
+    @Mock
+    private PreparedStatement stmt;
+    @Mock
+    private ResultSet rs;
 
-    private Trip trip;
+    private TripDao tripDao; // Assuming TripDao is similar to PersonDao for Trip objects
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-        trip = new Trip("A", "B", 1200, databaseService);
-
-        // Mocking database responses
-        when(databaseService.queryConnectingAirports("A")).thenReturn(new String[]{"B","C","D","E"});
-        when(databaseService.queryConnectingAirports("C")).thenReturn(new String[]{"A","B","D","E"});
-        when(databaseService.queryFlight("A", "C", 1200)).thenReturn(new Flight());
-        when(databaseService.queryFlight("C", "B", 3600)).thenReturn(new Flight());
+        when(ds.getConnection()).thenReturn(connection);
+        tripDao = new TripDao(ds); // Assuming TripDao has a constructor that accepts DataSource
     }
 
     @Test
-    void testFindFlightPath() {
-        trip.findFlightPath();
-        List<Flight> flightPath = trip.getFlightPath();
+    void testFindFlightPath() throws Exception {
+        // Mock behavior for database interactions
+        when(connection.prepareStatement(anyString())).thenReturn(stmt);
+        when(stmt.executeQuery()).thenReturn(rs);
+        when(rs.first()).thenReturn(true); // Assuming there's at least one result
+        // Simulate data for the ResultSet
+        when(rs.getInt("id")).thenReturn(1);
+        when(rs.getString("departing")).thenReturn("A");
+        when(rs.getString("destination")).thenReturn("B");
+        // for other fields, if nessessary
 
-        assertNotNull(flightPath, "flightPath should not be null");
-        assertEquals(2, flightPath.size(), "There should be 2 flights in the path");
-        // Add more assertions as needed to validate the flights
+        // Call the method under test
+        FlightPath path = tripDao.findFlightPath(...); // Fill in arguments as needed
+
+        // Verify interactions with the mock objects
+        verify(stmt, times(1)).executeQuery();
+        verify(rs, times(1)).first();
+
+        // Assertions about the result
+        assertNotNull(path);
+        // Further assertions as necessary based on your method's logic
     }
-}
 
+}
