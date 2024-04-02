@@ -40,28 +40,27 @@ public class DR_Booking implements Booking//Direct round-trip booking
     //Get the total flight time
     public int getFlightTime()
     {
-        return (flights[0].getFlightDuration() + flights[1].getFlightDuration());
+        return (flights[0].getFlightDuration() + flights[1].getFlightDuration());//Return the sum of the two flight durations
     }
 
     //Get the list of flights
     public List<Flight> getFlights()
     {
-        List<Flight> list = new ArrayList<Flight>();
-        if(this.flights[0] != null)
-        {
-            list.add(this.flights[0]);
-            list.add(this.flights[1]);
-        }
+        List<Flight> list = new ArrayList<Flight>();//Create a new list
+        if(this.flights[0] != null)//If the first flight is not null
+            list.add(this.flights[0]);//Add the first flight to the list
+        if(this.flights[1] != null)//If the second flight is not null
+            list.add(this.flights[1]);//Add the second flight to the list
 
-        return list;
+        return list;//Return the list
     }
 
     //Add a flight to the booking
     public void addFlight(Flight origin)
     {
-        if(flights[0] == null)
-            this.flights[0] = origin;
-        else if(flights[1] == null)
-            this.flights[1] = origin;
+        if(flights[0] == null)//If the first flight is null
+            this.flights[0] = origin;//Set the first flight to the origin
+        else if(flights[1] == null)//If the second flight is null
+            this.flights[1] = origin;//Set the second flight to the origin
     }
 }
