@@ -1,3 +1,7 @@
+/**
+ * @author: Noah Toma - 100825559
+ */
+
 package com.otu.SOFE3980U;
 
 import java.util.ArrayList;

@@ -1,5 +1,5 @@
 /**
- * @author Logan Butler Student#100828103
+ * @author Logan Butler - 100828103
  */
 package com.otu.SOFE3980U;
 
