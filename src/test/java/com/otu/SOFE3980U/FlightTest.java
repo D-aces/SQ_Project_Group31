@@ -7,7 +7,7 @@ import junit.framework.TestSuite;
 
 public class FlightTest 
 {
-    Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
+   
 
     /*
      * This is a test for the arrival time function.
@@ -15,7 +15,8 @@ public class FlightTest
      * @param assertTrue
      */
     public void testArrivalTime() {
-        assertTrue(Flight.getArrivalTime() == 100840);
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
+        assertTrue(flight.getArrivalTime() == 100840);
     }
 
     /*
@@ -24,6 +25,7 @@ public class FlightTest
      * @param assertEquals
      */
     public void testDepartAirport() {
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
         assertTrue(flight.getDepartingAirport().equals("Toronto"));
     }
 
@@ -33,6 +35,7 @@ public class FlightTest
      * @param assertTrue
      */
     public void testDestAirport() {
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
         assertTrue(flight.getDestinationAirport().equals("Beijing"));
     }
 
@@ -42,6 +45,7 @@ public class FlightTest
      * @param assertTrue
      */
     public void testDeptTime() {
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
         assertTrue(flight.getDepartingTime() == 40000);
     }
 
@@ -51,6 +55,7 @@ public class FlightTest
      * @param assertTrue
      */
     public void testFlightDuration() {
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
         assertTrue(flight.getFlightDuration() == 60840);
     }
 
@@ -60,6 +65,7 @@ public class FlightTest
      * @param assertTrue
      */
     public void testID() {
+    	Flight flight = new Flight("Toronto", "Beijing", 40000, 60840, 69);
         assertTrue(flight.getID() == 69);
     }
 }

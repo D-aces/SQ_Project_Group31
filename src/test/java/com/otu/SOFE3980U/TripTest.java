@@ -24,7 +24,7 @@ class TripTest {
     @Mock
     private ResultSet rs;
 
-    private TripDao tripDao; // Assuming TripDao is similar to PersonDao for Trip objects
+    private Tripdao tripDao; // Assuming TripDao is similar to PersonDao for Trip objects
 
     @BeforeEach
     void setUp() throws Exception {
