@@ -23,8 +23,6 @@ public class DO_Booking implements Booking
     {   
         if(flight[0] == null)
             this.flight[0] = origin;
-
-        
     }
 
     public int getFlightTime()
@@ -39,7 +37,8 @@ public class DO_Booking implements Booking
     //     return flight;
     // }
 
-    public Flight[] getFlights(){
+    public Flight[] getFlights()
+    {
         return flight;
     }
 }
