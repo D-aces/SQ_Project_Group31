@@ -17,19 +17,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 21
+    - name: Set up JDK and Maven Settings
       uses: actions/setup-java@v3
       with:
-        java-version: '21'
+        java-version: '21' 
         distribution: 'temurin'
-        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-        settings-path: ${{ github.workspace }} # location for the settings.xml file
+        server-id: github # This should match the <id> in your <distributionManagement> section in pom.xml
+        settings-path: ${{ github.workspace }} # Specifies where to generate the settings.xml
 
     - name: Build with Maven
       run: |
         mvn -B clean install --file pom.xml
-        mvn -B deploy -s $GITHUB_WORKSPACE/settings.xml
+        mvn -B deploy -s ${{ github.workspace }}/settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 
 # Note: Secrets.GITHUB_TOKEN is automatically created by GitHub Actions and does not need to be manually created.

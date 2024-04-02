@@ -128,6 +128,20 @@
 	</pluginManagement>
 </build>
 
+<distributionManagement>
+    <repository>
+        <id>github</id> <!-- This should match with the id in your settings.xml -->
+        <name>GitHub Packages Repository</name>
+        <url>https://maven.pkg.github.com/D-aces/SQ_Project_Group31</url>
+    </repository>
+    <snapshotRepository>
+        <id>github</id> <!-- This should match with the id in your settings.xml -->
+        <name>GitHub Packages Snapshot Repository</name>
+        <url>https://maven.pkg.github.com/D-aces/SQ_Project_Group31</url>
+    </snapshotRepository>
+</distributionManagement>
+
+
 <reporting>
 	<plugins>
 		<plugin>
