@@ -45,10 +45,6 @@ public class MO_Booking
 
     public List<Flight> getFlights()
     {
-        List<Flight> list = new ArrayList<>();
-        if(this.flights[0] != null)
-            list.add(this.flights[0]);
-
-        return list;
+        return trips.getFlightPath();
     }   
 }

@@ -37,13 +37,6 @@ public class DO_Booking implements Booking
         return 0;
     }
 
-    // public Flight getDirect()
-    // {
-    //     // Directly call the static method on the Database class
-    //     Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
-    //     return flight;
-    // }
-
     public List<Flight> getFlights()
     {
         List<Flight> list= new ArrayList<>();
