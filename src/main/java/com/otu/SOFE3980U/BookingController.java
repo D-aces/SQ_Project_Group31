@@ -9,15 +9,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BookingController {
 	@GetMapping("/bookflight")
-	public String getBooking() {
-		return null;
+	public String book() {
+		// Return and populate the booking.html template
+		return "booking";
 	}
 	
-	// Yeah I'm not sure what type this should be --> DMitri
-	// TODO: Figure out type for the tickets (Is it a string array of flights?)
-	@PostMapping("/generateticket")
-	public String getBooking() {
-		return null;
+	// TODO: Add the params needed for this, update the model, what class am I calling here? Do I need to do a conditional check
+	// to decide which Booking Class to create? 
+	@PostMapping("/printticket")
+	public String printTicket() {
+		// Return and populate the ticket.html template
+		return "ticket";
 	}
 
 }
