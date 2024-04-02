@@ -24,10 +24,13 @@ public class DR_Booking implements Booking
         System.out.println("Ticket");
     }
 
-    public void addFlight(Flight origin, Flight destination)
+    public void addFlight(Flight origin)
     {
-        this.flights[0] = origin;
-        this.flights[1] = destination;
+        if(flights[0] == null){
+            this.flights[0] = origin;
+        }else if(flights[1] == null){
+            this.flights[1] = origin;
+        }
     }
 
     public int getFlightTime()

@@ -179,18 +179,25 @@ class database{
 
         Flight[] flights = booking.getFlights();
 
-        PreparedStatement statement = con.prepareStatement("insert into (uname, departingFlight, returningFlight, stay) values(" + 
+        PreparedStatement statement = con.prepareStatement("insert into DR_Bookings (uname, departingFlight, returningFlight, stay) values(" + 
                                                             uname + flights[0].getID() + flights[1].getID() + booking.stay +")");
         statement.executeQuery();
 
         con.close();
     }
 
-    private static int saveDO(DO_Booking booking, String uname, int stay){
+    private static int saveDO(DO_Booking booking, String uname){
         Connection con = connect();
 
         if(con == null){
             return -1;
         }
+
+        Flight[] flights = booking.getFlights();
+
+        PreparedStatement statement = con.prepareStatement("insert into DO_Bookings (uname, departingFlight) values (" + uname + flights[0].getID() +")");
+        statement.executeQuery();
+
+        con.close();
     }
 }

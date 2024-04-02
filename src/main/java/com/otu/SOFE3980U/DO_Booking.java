@@ -2,7 +2,7 @@ package com.otu.SOFE3980U;
 
 public class DO_Booking implements Booking
 {
-    private Flight[] flight;
+    private Flight[] flight = new Flight[1];
 
     public boolean getTripType()
     {
@@ -19,12 +19,12 @@ public class DO_Booking implements Booking
         System.out.println();
     }
 
-    public void addFlight(Flight origin, Flight destination)
-    {
-        flight[0] = origin;
-        flight[1] = destination;
+    public void addFlight(Flight origin)
+    {   
+        if(flight[0] == null)
+            this.flight[0] = origin;
 
-        System.out.println("Flight added:\nOrigin: " + flight + "\nDestination: " + flight);
+        
     }
 
     public int getFlightTime()
@@ -32,10 +32,14 @@ public class DO_Booking implements Booking
         return 0;
     }
 
-    public Flight getDirect()
-    {
-        // Directly call the static method on the Database class
-        Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
+    // public Flight getDirect()
+    // {
+    //     // Directly call the static method on the Database class
+    //     Flight flight = Database.queryFlight(this.departingAirport, this.finalDestination, this.departingTime);
+    //     return flight;
+    // }
+
+    public Flight[] getFlights(){
         return flight;
     }
 }

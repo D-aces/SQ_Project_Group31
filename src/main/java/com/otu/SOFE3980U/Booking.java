@@ -8,7 +8,7 @@ public interface Booking {
 	public void getTicket(Booking booking);
 	public boolean getTripType();
 	public boolean getOneWay();
-	public void addFlight(Flight origin, Flight destination);
+	public void addFlight(Flight flight);
 	public int getFlightTime();
 	public Flight[] getFlights();
 
