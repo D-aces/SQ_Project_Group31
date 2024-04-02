@@ -15,12 +15,6 @@ public class DR_Booking implements Booking//Direct round-trip booking
         new Flight(null, null, 0, 0, 0)//Flight object
     };//Array to store the two flights
     public int stay;//Number of days the user will stay at the destination
-
-    //Constructor
-    public DR_Booking(int stay)
-    {
-        this.stay = stay;
-    }
     
     /* Getters */
     //Get the type of trip
