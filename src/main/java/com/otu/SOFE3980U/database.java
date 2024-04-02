@@ -11,10 +11,6 @@ import java.util.List;
 
 import javax.naming.spi.DirStateFactory.Result;
 
-import com.otu.SOFE3980U.DO_Booking;
-import com.otu.SOFE3980U.DR_Booking;
-import com.otu.SOFE3980U.Flight;
-
 class database{
 
     private static String username = "quality";
@@ -268,6 +264,8 @@ class database{
             return null;
         }
 
+        Booking booking;
+
         PreparedStatement statement;
 
         type.toLowerCase();
@@ -296,7 +294,7 @@ class database{
 
         switch(type){
             case "mr":{
-                MR_Booking booking = new MR_Booking();
+                booking = new MR_Booking();
                 List<Flight> list1 = makeFlightPath(result.getString("departingPath"));
                 List<Flight> list2 = makeFlightPath(result.getString("returningPath"));
 
@@ -304,17 +302,59 @@ class database{
                 booking.addFlight(list1.get(1));
                 booking.addFlight(list1.get(2));
                 booking.addFlight(list1.get(3));
+
+                booking.stay = result.getInt("stay");
             }
             case "mo":{
-                MO_Booking booking = new MR_Booking();
+                booking = new MR_Booking();
                 List<Flight> list = makeFlightPath(result.getString("flightPath"));
 
                 booking.addFlight(list.get(0));
                 booking.addFlight(list.get(1));
             }
-            case "dr":
-            case "do":
+            case "dr":{
+                booking = new DR_Booking();
+                Flight f1 = makeFlight(result.getString("departingFlight"));
+                Flight f2 = makeFlight(result.getString("returningFlight"));
+
+                booking.addFlight(f1);
+                booking.addFlight(f2);
+
+                booking.stay = result.getInt("stay");
+            }
+            case "do":{
+                booking = new DO_Booking();
+                Flight f1 = makeFlight(result.getString("departingFlight"));
+
+                booking.addFlight(f1);
+            }
         }
+
+        return booking;
+    }
+
+    private static Flight makeFlight(String id){
+
+        Connection con = connect();
+
+        if(con == null){
+            return null;
+        }
+
+        try{
+            PreparedStatement statement = con.prepareStatement("select * from Flights where id=" + id);
+            ResultSet result = statement.executeQuery();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        try{
+            con.close();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        return new Flight(result.getString("departing"), result.getString("destination"), result.getInt("departingTime"), result.getInt("flightTime"), result.getInt("id"));
     }
 
     private static List<Flight> makeFlightPath(String path){
