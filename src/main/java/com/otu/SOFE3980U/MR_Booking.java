@@ -13,7 +13,7 @@ public class MR_Booking implements Booking{
 
     public void getTicket(){
 
-        //to be implemented later
+        return;
     }
 
     public boolean getTripType(){
@@ -25,8 +25,8 @@ public class MR_Booking implements Booking{
     }
 
     public void addFlight(Flight flight){
-        List<Flight> list1 = new ArrayList<>();
-        List<Flight> list2 = new ArrayList<>();
+        List<Flight> list1 = new ArrayList<Flight>();
+        List<Flight> list2 = new ArrayList<Flight>();
 
         list1 = this.trips[0].getFlightPath();
         list2 = this.trips[1].getFlightPath();
@@ -49,7 +49,7 @@ public class MR_Booking implements Booking{
     }
 
     public List<Flight> getFlights(){
-        List<Flight> list = new ArrayList<>();
+        List<Flight> list = new ArrayList<Flight>();
 
         list.addAll(trips[0].getFlightPath());
         list.addAll(trips[1].getFlightPath());

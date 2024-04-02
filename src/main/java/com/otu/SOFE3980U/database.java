@@ -26,7 +26,7 @@ class database{
         }
 
         //Get all types of bookings
-        List<Booking> bookings = new ArrayList<>();
+        List<Booking> bookings = new ArrayList<Booking>();
 
         //Get all MR bookings
         PreparedStatement statement = con.prepareStatement("select * from MR_Bookings where uname=" + uname);
@@ -208,7 +208,7 @@ class database{
         PreparedStatement statement;
 		try {
 			statement = con.prepareStatement("insert into DR_Bookings (uname, departingFlight, returningFlight, stay) values(" + 
-			                                                    uname + flights[0].getID() + flights[1].getID() + booking.stay +")");
+			                                                    uname + flights.get(0).getID() + flights.get(1).getID() + booking.stay +")");
 	        statement.executeQuery();
 
 		} catch (SQLException e) {
@@ -240,7 +240,7 @@ class database{
 
         PreparedStatement statement;
 		try {
-			statement = con.prepareStatement("insert into DO_Bookings (uname, departingFlight) values (" + uname + flights[0].getID() +")");
+			statement = con.prepareStatement("insert into DO_Bookings (uname, departingFlight) values (" + uname + flights.get(0).getID() +")");
 	        statement.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
