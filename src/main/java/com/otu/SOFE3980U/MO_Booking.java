@@ -1,0 +1,45 @@
+public class MO_Booking
+{
+    private Flight[] flights = new Flight[1];
+    int stay;
+
+    public MO_Booking(int stay)
+    {
+        this.stay = stay;
+    }
+    
+    public boolean getTripType()
+    {
+        return true;
+    }
+
+    public boolean getOneWay()
+    {
+        return false;
+    }
+
+    public void getTicket()
+    {
+        return;
+    }
+
+    public void addFlight(Flight flight)
+    {
+        if(flights[0] == null)
+            this.flights[0] = flight;
+    }
+
+    public int getFlightTime()
+    {
+        return 0;
+    }
+
+    public List<Flight> getFlights()
+    {
+        List<Flight> list = new ArrayList<>();
+        if(this.flights[0] != null)
+            list.add(this.flights[0]);
+
+        return list;
+    }   
+}
