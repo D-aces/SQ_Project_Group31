@@ -32,7 +32,7 @@ public class DR_Booking implements Booking//Direct round-trip booking
     }
 
     //Get the ticket
-    public void getTicket(Booking booking)
+    public void getTicket()
     {
         return;
     }
